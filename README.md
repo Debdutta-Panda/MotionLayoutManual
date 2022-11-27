@@ -71,7 +71,14 @@ There are 2 ways of describing the constraint set.
 
 ```kotlin
 MotionLayout(
-        start = ConstraintSet {  },
+        start = ConstraintSet { 
+            val box = createRefFor("box")
+            
+            constrain(box){
+                top.linkTo(parent.top)
+                start.linkTo(parent.start)
+            }
+        },
         end = ConstraintSet {  },
         progress = 0f,
         modifier = Modifier.fillMaxSize()
