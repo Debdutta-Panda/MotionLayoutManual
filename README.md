@@ -95,3 +95,11 @@ MotionLayout(
 <img src="https://user-images.githubusercontent.com/92369023/204151051-a2da2ea7-ac9e-43be-bdd3-564b90107cec.png" alt="drawing" width="200"/>
 
 This can be the simplest possible motion layout example.
+
+# Constraint describing procedure
+
+1. Set the layoutId for the composable
+2. Retrieve the ConstrainedLayoutReference for the composable
+3. Set the constraints for the constrained layout reference
+
+
