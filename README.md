@@ -52,3 +52,5 @@ fun MotionLayout(
     crossinline content: @Composable MotionLayoutScope.() -> Unit
 )
 ```
+
+This overload is good to start as it is easy to learn after we have habituated with ConstraintLayout.
