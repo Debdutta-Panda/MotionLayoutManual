@@ -87,6 +87,4 @@ MotionLayout(
 
 <img src="https://user-images.githubusercontent.com/92369023/204151051-a2da2ea7-ac9e-43be-bdd3-564b90107cec.png" alt="drawing" width="200"/>
 
-<button>Hello</button>
-
 This can be the simples possible motion layout example.
