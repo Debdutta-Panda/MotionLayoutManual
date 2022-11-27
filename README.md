@@ -37,3 +37,18 @@ MotionLayout(
   ...
 }
 ```
+
+There are various overloads of MotionLayout. But we will focus the following one:
+
+```kotlin
+fun MotionLayout(
+    start: ConstraintSet,
+    end: ConstraintSet,
+    transition: androidx.constraintlayout.compose.Transition? = null,
+    progress: Float,
+    debug: EnumSet<MotionLayoutDebugFlags> = EnumSet.of(MotionLayoutDebugFlags.NONE),
+    modifier: Modifier = Modifier,
+    optimizationLevel: Int = Optimizer.OPTIMIZATION_STANDARD,
+    crossinline content: @Composable MotionLayoutScope.() -> Unit
+)
+```
