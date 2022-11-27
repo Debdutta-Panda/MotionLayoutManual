@@ -58,3 +58,7 @@ This overload is good to start as it is easy to learn after we have habituated w
 # ConstraintSet
 
 Description of the constraints used to layout the children.
+
+# Progress
+
+It is the value of how much we moved towards the end state. Supposed in start state a ui component width is 0.dp and in end state the same is 100.dp
