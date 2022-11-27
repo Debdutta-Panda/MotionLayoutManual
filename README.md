@@ -16,7 +16,7 @@ Constraint layout is a special type of layout which allows us to layout the ui c
 
 # Setup
 
-Insert the following inside the dependency block of module-level build.gradle
+Insert the following inside the dependency block of module-level `build.gradle`
 
 ```groovy
 implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
