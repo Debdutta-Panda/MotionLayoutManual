@@ -62,3 +62,9 @@ It is the value of how much we have moved towards the end state. Suppose in star
 # ConstraintSet
 
 Description of the constraints used to layout the children.
+
+There are 2 ways of describing the constraint set.
+1. JSON5 way
+2. Programmatical way
+
+
