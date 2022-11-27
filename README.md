@@ -55,10 +55,10 @@ fun MotionLayout(
 
 This overload is good to start as it is easy to learn after we have habituated with ConstraintLayout.
 
-# ConstraintSet
-
-Description of the constraints used to layout the children.
-
 # Progress
 
 It is the value of how much we have moved towards the end state. Suppose in start state a ui component width is 0.dp and in end state the same is 100.dp. So, now if the progress is 0.75 then that ui component width will be `(0 + 0.75 x 100).dp`. The valid range of progress is 0 through 1.
+
+# ConstraintSet
+
+Description of the constraints used to layout the children.
