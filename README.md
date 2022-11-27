@@ -1,7 +1,7 @@
 # MotionLayoutManual
 
 # Introduction
-This is the documentation of Jetpack Composed MotionLayout.
+This is the documentation of Jetpack Compose MotionLayout.
 
 # Motive
 
