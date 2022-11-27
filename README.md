@@ -24,7 +24,7 @@ implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
 
 # Startup
 
-```groovy
+```kotlin
 MotionLayout(
   start = ConstraintSet{
     ...
