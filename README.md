@@ -107,5 +107,5 @@ This can be the simplest possible motion layout example.
 We can have the ConstrainedLayoutReference by the following way
 
 ```kotlin
-val box = createRefFor("box")
+val <variable_name> = createRefFor(<layout_id>)
 ```
