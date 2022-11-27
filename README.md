@@ -123,3 +123,13 @@ We can have the ConstrainedLayoutReference by the following way
 ```kotlin
 val <variable_name> = createRefFor(<layout_id>)
 ```
+
+# Constraints
+
+We can set the constraints by the following way
+
+```kotlin
+constrain(<constrianedLayoutReference_variable>){
+    //constraints
+}
+```
