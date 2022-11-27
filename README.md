@@ -111,7 +111,7 @@ Example:
 ```kotlin
 Box(
     modifier = Modifier
-        .layoutId("box")
+        .layoutId("my_box")
         ...
 )
 ```
