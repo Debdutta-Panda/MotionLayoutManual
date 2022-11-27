@@ -133,3 +133,28 @@ constrain(<constrianedLayoutReference_variable>){
     //constraints
 }
 ```
+
+Again the following is a complete but minimal example of motion layout
+
+```kotlin
+MotionLayout(
+    start = ConstraintSet { 
+        val box = createRefFor("box")
+
+        constrain(box){
+            top.linkTo(parent.top)
+            start.linkTo(parent.start)
+        }
+    },
+    end = ConstraintSet {  },
+    progress = 0f,
+    modifier = Modifier.fillMaxSize()
+) {
+    Box(
+        modifier = Modifier
+            .layoutId("box")
+            .size(100.dp)
+            .background(Color.Red)
+    )
+}
+```
