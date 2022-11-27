@@ -21,3 +21,19 @@ Insert the following inside the dependency block of module-level `build.gradle`
 ```groovy
 implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
 ```
+
+# Startup
+
+```groovy
+MotionLayout(
+  start = ConstraintSet{
+    ...
+  },
+  end = ConstraintSet{
+    ...
+  },
+  progress = 0f
+){
+  ...
+}
+```
