@@ -5,7 +5,7 @@ This is the documentation of Jetpack Compose MotionLayout.
 
 # Motive
 
-There are no comprehensive reference for MotionLayout. So, I crafting this manual.
+There are no comprehensive reference for MotionLayout. So, I am crafting this manual.
 
 # MotionLayout
 Motion layout is extended variation of constraint layout. It supports animation between 2 states. We can define 2 states and motion layout will animate the layout from starting state to ending state.
