@@ -102,4 +102,10 @@ This can be the simplest possible motion layout example.
 2. Retrieve the ConstrainedLayoutReference for the composable
 3. Set the constraints for the constrained layout reference
 
+# ConstrainedLayoutReference
 
+We can have the ConstrainedLayoutReference by the following way
+
+```kotlin
+val box = createRefFor("box")
+```
