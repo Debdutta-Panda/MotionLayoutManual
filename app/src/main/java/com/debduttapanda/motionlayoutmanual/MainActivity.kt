@@ -34,7 +34,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    SampleUI()
+                    //SampleUI()
+                    MotionLayout1()
                 }
             }
         }
@@ -45,10 +46,10 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMotionApi::class)
 @Composable
 private fun SampleUI() {
-    var progress by remember {
-        mutableStateOf(0f)
-    }
     Box {
+        var progress by remember {
+            mutableStateOf(0f)
+        }
         MotionLayout(
             start = ConstraintSet {
                 val red = createRefFor("red")
@@ -229,7 +230,31 @@ private fun SampleUI() {
             }
         )
     }
+}
 
+@OptIn(ExperimentalMotionApi::class)
+@Composable
+fun MotionLayout1() {
+    MotionLayout(
+        start = ConstraintSet {
+            val box = createRefFor("box")
+
+            constrain(box){
+                top.linkTo(parent.top)
+                start.linkTo(parent.start)
+            }
+        },
+        end = ConstraintSet {  },
+        progress = 0f,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Box(
+            modifier = Modifier
+                .layoutId("box")
+                .size(100.dp)
+                .background(Color.Red)
+        )
+    }
 }
 
 fun ConstraintSetScope.ClockEndConstraint() {
