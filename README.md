@@ -102,6 +102,20 @@ This can be the simplest possible motion layout example.
 2. Retrieve the ConstrainedLayoutReference for the composable
 3. Set the constraints for the constrained layout reference
 
+# layoutId
+
+We can set layoutId for any composable by using `Modifier.layoutId(<layout_id>)`
+
+Example:
+
+```kotlin
+Box(
+    modifier = Modifier
+        .layoutId("box")
+        ...
+)
+```
+
 # ConstrainedLayoutReference
 
 We can have the ConstrainedLayoutReference by the following way
