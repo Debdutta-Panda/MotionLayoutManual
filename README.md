@@ -54,3 +54,7 @@ fun MotionLayout(
 ```
 
 This overload is good to start as it is easy to learn after we have habituated with ConstraintLayout.
+
+# ConstraintSet
+
+Description of the constraints used to layout the children.
