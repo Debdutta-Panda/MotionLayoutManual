@@ -160,3 +160,33 @@ MotionLayout(
 ```
 
 As we can see creating the reference and mentioning the constraints are only possible inside a ConstraintSet{}
+
+There are various constraints for a component:
+* start
+* end
+* top
+* bottom
+* centering horizontally
+* centering vertically
+* centering in both dimenstion
+* centering around
+* pivotX
+* pivotY
+* scaleX
+* scaleY
+* rotationX
+* rotationY
+* rotationZ
+* translationX
+* translationY
+* translationZ
+* visibility
+* alpha
+* circular
+* width
+* height
+* baseline
+* absoluteLeft
+* absoluteRight
+* horizontalChainWeight
+* verticalChainWeight
