@@ -190,3 +190,10 @@ There are various constraints for a component:
 * absoluteRight
 * horizontalChainWeight
 * verticalChainWeight
+
+We can group these constraints like the following:
+
+1. Placement constraints
+2. Dimension constraints
+3. Transformation constraints
+4. Property constraints
