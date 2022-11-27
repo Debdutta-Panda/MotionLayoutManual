@@ -69,4 +69,20 @@ There are 2 ways of describing the constraint set.
 
 # ConstraintSet programmatically
 
+```kotlin
+MotionLayout(
+        start = ConstraintSet {  },
+        end = ConstraintSet {  },
+        progress = 0f,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Box(
+            modifier = Modifier
+                .layoutId("box")
+                .size(100.dp)
+                .background(Color.Red)
+        )
+    }
+```
 
+This can be the simples possible motion layout example.
