@@ -158,3 +158,5 @@ MotionLayout(
     )
 }
 ```
+
+As we can see creating the reference and mentioning the constraints are only possible inside a ConstraintSet{}
