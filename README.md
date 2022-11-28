@@ -442,3 +442,26 @@ fun MotionLayout1() {
 ```
 
 <img src="https://user-images.githubusercontent.com/92369023/204347471-10e8d309-6e44-4da9-9561-854d30f711a2.png" alt="drawing" width="200"/>
+
+# Dimension constraints
+
+1. width
+2. height
+## Syntax
+
+```kotlin
+<dimension_name> = Dimension value
+```
+
+## Dimension value
+
+There are few ways to mention the dimension value
+
+1. value in Dp: Dimension.value(20.dp)
+2. wrapContent: Dimension.wrapContent
+3. fillToConstraintss: Dimension.fillToConstraints
+4. preferredWrapContent: Dimension.preferredWrapContent
+5. matchParent: Dimension.matchParent
+6. percent: Dimension.percent(0.5f), 1f = 100%
+7. preferredValue: Dimension.preferredValue(200.dp)
+8. ratio: Dimenstion.ratio("1:2)"), width : height if used width = ..., height : width otherwise
