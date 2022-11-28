@@ -255,6 +255,12 @@ We can further divide the placement constraints as following:
   * absoluteRight
   * baseline
 
+## Syntac
+
+```kotlin
+constraint_name.(other_constrainedReference, margin, goneMargin)
+```
+
 ## 2. Centering constraints
   * centering Horizontally
   * centering vertically
