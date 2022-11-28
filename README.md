@@ -328,3 +328,14 @@ fun MotionLayout1() {
 
 ## 3. Circular arrangement constraint
   * circular
+
+### Syntax
+
+```kotlin
+<centering_method>(other_constrainedReference)
+```
+
+### Centering methods
+
+1. centerTo
+
