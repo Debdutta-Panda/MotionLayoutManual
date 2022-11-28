@@ -381,3 +381,62 @@ fun MotionLayout1() {
 ```
 
 <img src="https://user-images.githubusercontent.com/92369023/204345099-2e70f6a9-1466-4d92-8080-9bbeb7dcbb3d.png" alt="drawing" width="200"/>
+
+## Circular
+
+Used to place a component around another compoent at an  angle and distance
+
+### Syntax
+
+```kotlin
+circular(other_constrainedReference, angle, distance)
+```
+
+### Working example
+
+```kotlin
+@OptIn(ExperimentalMotionApi::class)
+@Composable
+fun MotionLayout1() {
+    MotionLayout(
+        start = ConstraintSet {
+            val center = createRefFor("center")
+
+
+
+            constrain(center){
+                centerTo(parent)
+            }
+
+            for(i in 0..11){
+                val ref = createRefFor("$i")
+                constrain(ref){
+                    circular(
+                        other = center,
+                        angle = (i+1)*30f,
+                        distance = 60.dp
+                    )
+                }
+            }
+        },
+        end = ConstraintSet {  },
+        progress = 0f,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Box(
+            modifier = Modifier
+                .layoutId("center")
+                .size(10.dp)
+                .clip(CircleShape)
+                .background(Color.Black)
+        )
+        for(i in 0..11){
+            Text(
+                "${i + 1}",
+                modifier = Modifier
+                    .layoutId("$i")
+            )
+        }
+    }
+}
+```
