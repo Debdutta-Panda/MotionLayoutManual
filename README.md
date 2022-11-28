@@ -342,3 +342,40 @@ fun MotionLayout1() {
 3. centerVerticalTo
 4. centerAround: There are 2 variation, one for horizontal another for vertical
 
+### Working exaampe
+
+```kotlin
+@OptIn(ExperimentalMotionApi::class)
+@Composable
+fun MotionLayout1() {
+    MotionLayout(
+        start = ConstraintSet {
+            val box = createRefFor("box")
+            val smallBox = createRefFor("smallBox")
+
+            constrain(box){
+                centerTo(parent)
+            }
+            constrain(smallBox){
+                centerTo(box)
+            }
+        },
+        end = ConstraintSet {  },
+        progress = 0f,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Box(
+            modifier = Modifier
+                .layoutId("box")
+                .size(100.dp)
+                .background(Color.Red)
+        )
+        Box(
+            modifier = Modifier
+                .layoutId("smallBox")
+                .size(50.dp)
+                .background(Color.Blue)
+        )
+    }
+}
+```
