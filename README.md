@@ -338,4 +338,8 @@ fun MotionLayout1() {
 ### Centering methods
 
 1. centerTo
+2. centerHorizontalTo
+3. centerVerticalTo
+4. centerAround
+    There are 2 variation, one for horizontal another for vertical
 
