@@ -457,11 +457,11 @@ fun MotionLayout1() {
 
 There are few ways to mention the dimension value
 
-1. value in Dp: Dimension.value(20.dp)
-2. wrapContent: Dimension.wrapContent
-3. fillToConstraintss: Dimension.fillToConstraints
-4. preferredWrapContent: Dimension.preferredWrapContent
-5. matchParent: Dimension.matchParent
-6. percent: Dimension.percent(0.5f), 1f = 100%
-7. preferredValue: Dimension.preferredValue(200.dp)
-8. ratio: Dimenstion.ratio("1:2)"), width : height if used width = ..., height : width otherwise
+1. **value in Dp:** `Dimension.value(20.dp)`
+2. **wrapContent:** `Dimension.wrapContent`
+3. **fillToConstraintss:** `Dimension.fillToConstraints`
+4. **preferredWrapContent:** `Dimension.preferredWrapContent`
+5. **matchParent:** `Dimension.matchParent`
+6. **percent:** `Dimension.percent(0.5f)`, 1f = 100%
+7. **preferredValue:** `Dimension.preferredValue(200.dp)`
+8. **ratio:** `Dimenstion.ratio("1:2)")`, width : height if used width = ..., height : width otherwise
