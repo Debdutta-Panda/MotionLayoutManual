@@ -212,3 +212,8 @@ We can group these constraints as following:
 * baseline
 * absoluteLeft
 * absoluteRight
+
+# Dimension constraints
+
+* width
+* height
