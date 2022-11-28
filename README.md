@@ -271,6 +271,15 @@ constraint_name.linkTo(other_constrainedReference.allowed_constraint_name, margi
 
 Horizontal constraints allow only horizontal constraints
 
+## Constrained Reference
+
+There are few types of constrained reference
+
+1. Implicit parent
+2. Explicit, created by createRefFor
+3. Explicit, guidelines
+4. Explicit, barriers
+
 ## 2. Centering constraints
   * centering Horizontally
   * centering vertically
