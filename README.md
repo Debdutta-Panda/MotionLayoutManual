@@ -237,7 +237,7 @@ We can group these constraints as following:
 * visibility
 * alpha
 
-# Other
+# Other constraints
 
 * horizontalChainWeight
 * verticalChainWeight
