@@ -197,6 +197,7 @@ We can group these constraints as following:
 2. Dimension constraints
 3. Transformation constraints
 4. Property constraints
+5. Other constraints
 
 # Placement constraints
 
@@ -230,3 +231,8 @@ We can group these constraints as following:
 * translationX
 * translationY
 * translationZ
+
+# Property constraints
+
+* visibility
+* alpha
