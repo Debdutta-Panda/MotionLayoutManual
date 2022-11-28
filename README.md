@@ -271,6 +271,13 @@ constraint_name.linkTo(other_constrainedReference.allowed_constraint_name, margi
 
 Horizontal constraints allow only horizontal constraints
 
+#### Vertical constraints
+  * top
+  * bottom
+  * baseline
+
+Vertical constraints allow only vertical constraints
+
 ## Constrained Reference
 
 There are few types of constrained reference
