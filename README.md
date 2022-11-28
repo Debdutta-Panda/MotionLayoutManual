@@ -246,7 +246,7 @@ We can group these constraints as following:
 
 We can further divide the placement constraints as following:
 
-1. linkTo pattern
+# 1. linkTo pattern
   * start
   * end
   * top
