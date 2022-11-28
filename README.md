@@ -280,6 +280,10 @@ There are few types of constrained reference
 3. Explicit, `guideline`s
 4. Explicit, `barrier`s
 
+## margin, goneMargin
+
+margin and goneMargin is in `Dp`
+
 ## 2. Centering constraints
   * centering Horizontally
   * centering vertically
