@@ -264,6 +264,12 @@ constraint_name.linkTo(other_constrainedReference.allowed_constraint_name, margi
 ### Allowed Constraints
 
 #### Horizontal constraints
+  * start
+  * end
+  * absoluteLeft
+  * absoluteRight
+
+Horizontal constraints allow only horizontal constraints
 
 ## 2. Centering constraints
   * centering Horizontally
