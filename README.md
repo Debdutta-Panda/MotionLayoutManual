@@ -254,3 +254,9 @@ We can further divide the placement constraints as following:
   * absoluteLeftt
   * absoluteRight
   * baseline
+
+## 2. Centering constraints
+  * centering Horizontally
+  * centering vertically
+  * centering in both direction
+  * centering around
