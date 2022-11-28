@@ -379,3 +379,5 @@ fun MotionLayout1() {
     }
 }
 ```
+
+<img src="https://user-images.githubusercontent.com/92369023/204345099-2e70f6a9-1466-4d92-8080-9bbeb7dcbb3d.png" alt="drawing" width="200"/>
