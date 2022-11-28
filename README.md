@@ -255,10 +255,10 @@ We can further divide the placement constraints as following:
   * absoluteRight
   * baseline
 
-## Syntac
+## Syntax
 
 ```kotlin
-constraint_name.(other_constrainedReference, margin, goneMargin)
+constraint_name.(other_constrainedReference.allowed_constraint_name, margin, goneMargin)
 ```
 
 ## 2. Centering constraints
