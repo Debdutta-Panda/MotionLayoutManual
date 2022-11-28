@@ -168,7 +168,7 @@ There are various constraints for a component:
 * bottom
 * centering horizontally
 * centering vertically
-* centering in both dimenstion
+* centering in both direction
 * centering around
 * pivotX
 * pivotY
@@ -191,9 +191,24 @@ There are various constraints for a component:
 * horizontalChainWeight
 * verticalChainWeight
 
-We can group these constraints like the following:
+We can group these constraints as following:
 
 1. Placement constraints
 2. Dimension constraints
 3. Transformation constraints
 4. Property constraints
+
+# Placement constraints
+
+* start
+* end
+* top
+* bottom
+* centering Horizontally
+* centering vertically
+* centering in both direction
+* centering around
+* circular
+* baseline
+* absoluteLeft
+* absoluteRight
