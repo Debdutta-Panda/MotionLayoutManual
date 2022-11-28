@@ -291,6 +291,36 @@ There are few types of constrained reference
 
 margin and goneMargin is in `Dp`
 
+### Working examplle
+
+```kotlin
+@OptIn(ExperimentalMotionApi::class)
+@Composable
+fun MotionLayout1() {
+    MotionLayout(
+        start = ConstraintSet {
+            val box = createRefFor("box")
+
+            constrain(box){
+                top.linkTo(parent.top, 40.dp)
+                start.linkTo(parent.start, 20.dp)
+
+            }
+        },
+        end = ConstraintSet {  },
+        progress = 0f,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Box(
+            modifier = Modifier
+                .layoutId("box")
+                .size(100.dp)
+                .background(Color.Red)
+        )
+    }
+}
+```
+
 ## 2. Centering constraints
   * centering Horizontally
   * centering vertically
