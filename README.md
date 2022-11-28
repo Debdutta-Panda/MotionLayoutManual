@@ -304,7 +304,6 @@ fun MotionLayout1() {
             constrain(box){
                 top.linkTo(parent.top, 40.dp)
                 start.linkTo(parent.start, 20.dp)
-
             }
         },
         end = ConstraintSet {  },
