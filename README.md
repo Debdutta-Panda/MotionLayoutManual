@@ -241,3 +241,16 @@ We can group these constraints as following:
 
 * horizontalChainWeight
 * verticalChainWeight
+
+# Placement constraints
+
+We can further divide the placement constraints as following:
+
+1. linkTo pattern
+  * start
+  * end
+  * top
+  * bottom
+  * absoluteLeftt
+  * absoluteRight
+  * baseline
