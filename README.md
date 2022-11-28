@@ -255,11 +255,15 @@ We can further divide the placement constraints as following:
   * absoluteRight
   * baseline
 
-## Syntax
+### Syntax
 
 ```kotlin
-`constraint_name`.linkTo(other_constrainedReference.allowed_constraint_name, margin, goneMargin)
+constraint_name.linkTo(other_constrainedReference.allowed_constraint_name, margin, goneMargin)
 ```
+
+### Allowed Constraints
+
+#### Horizontal constraints
 
 ## 2. Centering constraints
   * centering Horizontally
