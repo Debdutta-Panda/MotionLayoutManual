@@ -217,3 +217,16 @@ We can group these constraints as following:
 
 * width
 * height
+
+# Transformation constraints
+
+* pivotX
+* pivotY
+* scaleX
+* scaleY
+* rotationX
+* rotationY
+* rotationZ
+* translationX
+* translationY
+* translationZ
