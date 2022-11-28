@@ -260,3 +260,6 @@ We can further divide the placement constraints as following:
   * centering vertically
   * centering in both direction
   * centering around
+
+## 3. Circular arrangement constraint
+  * circular
