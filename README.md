@@ -654,3 +654,55 @@ val <name> = create<side_name>Barrier(ref1, ref2, margin_in_dp)
 4. **Bottom:** Creates horizontal anchor, used for vertical constraint
 5. **AbsoluteLeft:** Creates vertical anchor, used for horizontal constraint
 6. **AbsoluteRight:** Creates vertical anchor, used for horizontal constraint
+
+## Working example
+
+```kotlin
+@OptIn(ExperimentalMotionApi::class)
+@Composable
+fun MotionLayout1() {
+    MotionLayout(
+        start = ConstraintSet {
+            val ref1 = createRefFor("ref1")
+            val ref2 = createRefFor("ref2")
+            val ref3 = createRefFor("ref3")
+
+            val barrier1 = createStartBarrier(ref1, ref2)
+
+            constrain(ref1){
+                centerTo(parent)
+            }
+            constrain(ref2){
+                centerTo(parent)
+            }
+            constrain(ref3){
+                start.linkTo(barrier1)
+            }
+        },
+        end = ConstraintSet {  },
+        progress = 0f,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Box(
+            modifier = Modifier
+                .layoutId("ref2")
+                .size(100.dp)
+                .background(Color.Red)
+        )
+        Box(
+            modifier = Modifier
+                .layoutId("ref1")
+                .size(50.dp)
+                .background(Color.Blue)
+        )
+        Box(
+            modifier = Modifier
+                .layoutId("ref3")
+                .size(20.dp)
+                .background(Color.Green)
+        )
+    }
+}
+```
+
+<img src="https://user-images.githubusercontent.com/92369023/204437809-9f5c5493-1070-4bac-82e6-2c84b22ffe7d.png" alt="drawing" width="200"/>
