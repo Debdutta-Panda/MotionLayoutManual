@@ -568,3 +568,13 @@ fun MotionLayout1() {
 ```
 
 <img src="https://user-images.githubusercontent.com/92369023/204432247-7b98a477-af6c-482a-a586-175ff2391b39.png" alt="drawing" width="200"/>
+
+# Guide
+
+Guides are invisible anchors. We can use to place other components.
+
+## Create guide
+
+```kotlin
+val guide1 = createGuideFrom<side_name>(offset_in_dp)
+```
