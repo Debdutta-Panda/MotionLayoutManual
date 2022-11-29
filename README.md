@@ -706,3 +706,16 @@ fun MotionLayout1() {
 ```
 
 <img src="https://user-images.githubusercontent.com/92369023/204437809-9f5c5493-1070-4bac-82e6-2c84b22ffe7d.png" alt="drawing" width="200"/>
+
+# Chain
+
+A chain is a group of views that are linked to each other with bi-directional position constraints. The views within a chain can be distributed either vertically or horizontally.
+
+Chains can be horizontal or vertical.
+
+Chains can be styled in one of the following ways:
+
+**Spread:** The views are evenly distributed (after margins are accounted for). This is the default.
+**Spread inside:** The first and last view are affixed to the constraints on each end of the chain and the rest are evenly distributed.
+**Weighted:** When the chain is set to either spread or spread inside, you can fill the remaining space by setting one or more views to "match constraints" (0dp). By default, the space is evenly distributed between each view that's set to "match constraints," but you can assign a weight of importance to each view using the weight attributes. If you're familiar with layout_weight in a linear layout, this works the same way. So the view with the highest weight value gets the most amount of space; views that have the same weight get the same amount of space.
+**Packed:** The views are packed together (after margins are accounted for). You can then adjust the whole chain's bias (left/right or up/down) by changing the chain's head view bias.
