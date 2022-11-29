@@ -635,3 +635,22 @@ fun MotionLayout1() {
 ```
 
 <img src="https://user-images.githubusercontent.com/92369023/204434973-de654e91-d851-4656-bb63-260cfa5e419b.png" alt="drawing" width="200"/>
+
+# Barrier
+
+A Barrier references multiple constrained-references as input, and creates a virtual guideline based on the most extreme widget on the specified side. For example, a left barrier will align to the left of all the referenced items.
+
+## Syntax
+
+```kotlin
+val <name> = create<side_name>Barrier(ref1, ref2, margin_in_dp)
+```
+
+## Sides
+
+1. **Start:** Creates vertical anchor, used for horizontal constraint
+2. **End:** Creates vertical anchor, used for horizontal constraint
+3. **Top:** Creates horizontal anchor, used for vertical constraint
+4. **Bottom:** Creates horizontal anchor, used for vertical constraint
+5. **AbsoluteLeft:** Creates vertical anchor, used for horizontal constraint
+6. **AbsoluteRight:** Creates vertical anchor, used for horizontal constraint
