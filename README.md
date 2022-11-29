@@ -1058,7 +1058,7 @@ fun createVerticalChain(
 
 Creates a vertical chain including the referenced layouts. Use [constrain] with the resulting [VerticalChainReference] to modify the top and bottom constraints of this chain.
 
-# constrain APIs
+# ConstrainedLayoutReference APIs
 
 ## parent
 ```kotlin
