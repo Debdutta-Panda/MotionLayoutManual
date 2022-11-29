@@ -1050,9 +1050,9 @@ Creates a horizontal chain including the referenced layouts. Use [constrain] wit
 
 ```kotlin
 fun createVerticalChain(
-        vararg elements: ConstrainedLayoutReference,
-        chainStyle: ChainStyle = ChainStyle.Spread
-    ): VerticalChainReference
+    vararg elements: ConstrainedLayoutReference,
+    chainStyle: ChainStyle = ChainStyle.Spread
+): VerticalChainReference
 ```
 
 Creates a vertical chain including the referenced layouts. Use [constrain] with the resulting [VerticalChainReference] to modify the top and bottom constraints of this chain.
