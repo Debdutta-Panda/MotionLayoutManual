@@ -594,3 +594,44 @@ top.linkTo(guide2)
 4. **AbsoluteRight:** Create guideline from right with offset, vertical anchor, used for horizontal constraints
 5. **Top:** Create guideline from top with offset, horizontal anchor, used for vertical constraints
 6. **Bottom:** Create guideline from bottom with offset, horizontal anchor, used for vertical constraints
+
+## Working example
+
+```kotlin
+@OptIn(ExperimentalMotionApi::class)
+@Composable
+fun MotionLayout1() {
+    MotionLayout(
+        start = ConstraintSet {
+            val box = createRefFor("box")
+            val smallBox = createRefFor("smallBox")
+
+            val guide1 = createGuidelineFromStart(40.dp)
+            val guide2 = createGuidelineFromTop(60.dp)
+
+            constrain(box){
+                centerTo(parent)
+            }
+            constrain(smallBox){
+                start.linkTo(guide1)
+                top.linkTo(guide2)
+                width = Dimension.value(100.dp)
+                height = Dimension.ratio("1:1")
+                scaleX = 0.5f
+                rotationZ = 45f
+            }
+        },
+        end = ConstraintSet {  },
+        progress = 0f,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Box(
+            modifier = Modifier
+                .layoutId("smallBox")
+                .background(Color.Blue)
+        )
+    }
+}
+```
+
+![image](https://user-images.githubusercontent.com/92369023/204434973-de654e91-d851-4656-bb63-260cfa5e419b.png)
