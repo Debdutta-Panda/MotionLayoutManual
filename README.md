@@ -576,5 +576,14 @@ Guides are invisible anchors. We can use to place other components.
 ## Create guide
 
 ```kotlin
-val guide1 = createGuideFrom<side_name>(offset_in_dp)
+val guide1 = createGuideFrom<side_name>(offset_in_dp or fraction)
 ```
+
+## Sides
+
+1. **Start:** Creates guideline from start with offset, vertical anchor, used for horizontal constraints
+2. **AbsoluteLeft:** Create guideline from left with offset, vertical anchor, used for horizontal constraints
+3. **End:** Create guideline from end with offset, vertical anchor, used for horizontal constraints
+4. **AbsoluteRight:** Create guideline from right with offset, vertical anchor, used for horizontal constraints
+5. **Top:** Create guideline from top with offset, horizontal anchor, used for vertical constraints
+6. **Bottom:** Create guideline from bottom with offset, horizontal anchor, used for vertical constraints
