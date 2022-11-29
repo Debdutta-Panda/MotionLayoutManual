@@ -1057,3 +1057,267 @@ fun createVerticalChain(
 ```
 
 Creates a vertical chain including the referenced layouts. Use [constrain] with the resulting [VerticalChainReference] to modify the top and bottom constraints of this chain.
+
+# constrain APIs
+
+## parent
+```kotlin
+val parent: ConstrainedLayoutReference
+```
+Reference to the `ConstraintLayout` itself, which can be used to specify constraints between itself and its children.
+
+## start
+```kotlin
+val start: VerticalAnchorable
+```
+The start anchor of the layout - can be constrained using `VerticalAnchorable.linkTo`.
+
+## absoluteLeft
+```kotlin
+val absoluteLeft: VerticalAnchorable
+```
+The left anchor of the layout - can be constrained using `VerticalAnchorable.linkTo`.
+
+## top
+```kotlin
+val top: HorizontalAnchorable
+```
+The top anchor of the layout - can be constrained using `HorizontalAnchorable.linkTo`.
+
+## end
+```kotlin
+val end: VerticalAnchorable
+```
+The end anchor of the layout - can be constrained using `VerticalAnchorable.linkTo`.
+
+## absoluteRight
+```kotlin
+val absoluteRight: VerticalAnchorable
+```
+The right anchor of the layout - can be constrained using `VerticalAnchorable.linkTo`.
+
+## bottom
+```kotlin
+val bottom: HorizontalAnchorable
+```
+The bottom anchor of the layout - can be constrained using `HorizontalAnchorable.linkTo`.
+
+## baseline
+```kotlin
+val baseline: BaselineAnchorable
+```
+The `FirstBaseline` of the layout - can be constrained using `BaselineAnchorable.linkTo`.
+
+## width
+```kotlin
+var width: Dimension
+```
+The width of the `ConstraintLayout` child.
+
+## height
+```kotlin
+var height: Dimension
+```
+The height of the `ConstraintLayout` child.
+
+## visibility
+```kotlin
+var visibility: Visibility
+```
+The overall visibility of the `ConstraintLayout` child. `Visibility.Visible` by default.
+
+## alpha
+```kotlin
+var alpha: Float
+```
+The transparency value when rendering the content. Valid range is 0 to 1.
+
+## scaleX
+```kotlin
+var scaleX: Float
+```
+The percent scaling value on the horizontal axis. Where 1 is 100%.
+
+## scaleY
+```kotlin
+var scaleY: Float
+```
+The percent scaling value on the vertical axis. Where 1 is 100%.
+
+## rotationX
+```kotlin
+var rotationX: Float
+```
+The degrees to rotate the content over the horizontal axis.
+
+## rotationY
+```kotlin
+var rotationY: Float
+```
+The degrees to rotate the content over the vertical axis.
+
+## rotationZ
+```kotlin
+var rotationZ: Float
+```
+The degrees to rotate the content on the screen plane.
+
+## translationX
+```kotlin
+var translationX: Dp
+```
+The distance to offset the content over the X axis.
+
+## translationY
+```kotlin
+var translationY: Dp
+```
+The distance to offset the content over the Y axis.
+
+## translationZ
+```kotlin
+var translationZ: Dp
+```
+The distance to offset the content over the Z axis.
+
+## pivotX
+```kotlin
+var pivotX: Float
+```
+The X axis offset percent where the content is rotated and scaled.
+
+## pivotY
+```kotlin
+var pivotY: Float
+```
+The Y axis offset percent where the content is rotated and scaled.
+
+## horizontalChainWeight
+```kotlin
+var horizontalChainWeight: Float
+```
+Whenever the width is not fixed, this weight may be used by an horizontal Chain to decide how much space assign to this widget.
+## verticalChainWeight
+```kotlin
+var verticalChainWeight: Float
+```
+Whenever the height is not fixed, this weight may be used by a vertical Chain to decide how much space assign to this widget.
+
+## linkTo
+```kotlin
+fun linkTo(
+    start: ConstraintLayoutBaseScope.VerticalAnchor,
+    end: ConstraintLayoutBaseScope.VerticalAnchor,
+    startMargin: Dp = 0.dp,
+    endMargin: Dp = 0.dp,
+    startGoneMargin: Dp = 0.dp,
+    endGoneMargin: Dp = 0.dp,
+    @FloatRange(from = 0.0, to = 1.0) bias: Float = 0.5f
+)
+```
+Adds both start and end links towards other `ConstraintLayoutBaseScope.VerticalAnchor`s.
+
+```kotlin
+fun linkTo(
+    top: ConstraintLayoutBaseScope.HorizontalAnchor,
+    bottom: ConstraintLayoutBaseScope.HorizontalAnchor,
+    topMargin: Dp = 0.dp,
+    bottomMargin: Dp = 0.dp,
+    topGoneMargin: Dp = 0.dp,
+    bottomGoneMargin: Dp = 0.dp,
+    @FloatRange(from = 0.0, to = 1.0) bias: Float = 0.5f
+)
+```
+Adds both top and bottom links towards other `ConstraintLayoutBaseScope.HorizontalAnchor`s.
+
+```kotlin
+fun linkTo(
+    start: ConstraintLayoutBaseScope.VerticalAnchor,
+    top: ConstraintLayoutBaseScope.HorizontalAnchor,
+    end: ConstraintLayoutBaseScope.VerticalAnchor,
+    bottom: ConstraintLayoutBaseScope.HorizontalAnchor,
+    startMargin: Dp = 0.dp,
+    topMargin: Dp = 0.dp,
+    endMargin: Dp = 0.dp,
+    bottomMargin: Dp = 0.dp,
+    startGoneMargin: Dp = 0.dp,
+    topGoneMargin: Dp = 0.dp,
+    endGoneMargin: Dp = 0.dp,
+    bottomGoneMargin: Dp = 0.dp,
+    @FloatRange(from = 0.0, to = 1.0) horizontalBias: Float = 0.5f,
+    @FloatRange(from = 0.0, to = 1.0) verticalBias: Float = 0.5f
+)
+```
+Adds all start, top, end, bottom links towards other `ConstraintLayoutBaseScope.HorizontalAnchor`s.
+
+## centerTo
+```kotlin
+fun centerTo(other: ConstrainedLayoutReference)
+```
+Adds all start, top, end, bottom links towards the corresponding anchors of `other`. This will center the current layout inside or around (depending on size) `other`.
+
+## centerHorizontalyTo
+```kotlin
+fun centerHorizontallyTo(
+    other: ConstrainedLayoutReference,
+    @FloatRange(from = 0.0, to = 1.0) bias: Float = 0.5f
+)
+```
+Adds start and end links towards the corresponding anchors of `other`. This will center horizontally the current layout inside or around (depending on size) `other`.
+
+## centerVerticallyTo
+```kotlin
+fun centerVerticallyTo(
+    other: ConstrainedLayoutReference,
+    @FloatRange(from = 0.0, to = 1.0) bias: Float = 0.5f
+)
+```
+Adds top and bottom links towards the corresponding anchors of `other`. This will center vertically the current layout inside or around (depending on size) `other`.
+
+## centerAround
+```kotlin
+fun centerAround(anchor: ConstraintLayoutBaseScope.VerticalAnchor)
+```
+Adds start and end links towards a vertical `anchor`. This will center the current layout around the vertical `anchor`.
+
+```kotlin
+fun centerAround(anchor: ConstraintLayoutBaseScope.HorizontalAnchor)
+```
+Adds top and bottom links towards a horizontal `anchor`. This will center the current layout around the horizontal `anchor`.
+
+## circular
+```kotlin
+fun circular(other: ConstrainedLayoutReference, angle: Float, distance: Dp)
+```
+Set a circular constraint relative to the center of `other`. This will position the current widget at a relative angle and distance from `other`.
+
+## clearHorizontal
+```kotlin
+fun clearHorizontal()
+```
+Clear the constraints on the horizontal axis (left, right, start, end). Useful when extending another `ConstraintSet` with unwanted constraints on this axis.
+
+## clearVertical
+```kotlin
+fun clearVertical()
+```
+Clear the constraints on the vertical axis (top, bottom, baseline). Useful when extending another `ConstraintSet` with unwanted constraints on this axis.
+
+## clearConstraints
+```kotlin
+fun clearConstraints()
+```
+Clear all constraints (vertical, horizontal, circular). Useful when extending another `ConstraintSet` with unwanted constraints applied.
+
+## resetDimensions
+```kotlin
+fun resetDimensions()
+```
+Resets the `width` and `height` to their default values. Useful when extending another `ConstraintSet` with unwanted dimensions.
+
+## resetTransforms
+```kotlin
+fun resetTransforms()
+```
+Reset all render-time transforms of the content to their default values. Does not modify the `visibility` property.
+Useful when extending another `ConstraintSet` with unwanted transforms applied.
