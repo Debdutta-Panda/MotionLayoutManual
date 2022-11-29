@@ -985,6 +985,16 @@ fun createStartBarrier(
 ```
 Creates and returns a start barrier, containing the specified elements.
 
+## createEndBarrier
+
+```kotlin
+fun createEndBarrier(
+    vararg elements: ConstrainedLayoutReference,
+    margin: Dp = 0.dp
+): VerticalAnchor
+```
+Creates and returns an end barrier, containing the specified elements.
+
 ## crreateAbsoluteLeftBarrier
 
 ```kotlin
@@ -994,6 +1004,16 @@ fun createAbsoluteLeftBarrier(
     ): VerticalAnchor
 ```
 Creates and returns a left barrier, containing the specified elements.
+
+## createAbsoluteRightBarrier
+
+```kotlin
+fun createAbsoluteRightBarrier(
+    vararg elements: ConstrainedLayoutReference,
+    margin: Dp = 0.dp
+): VerticalAnchor
+```
+Creates and returns a right barrier, containing the specified elements.
 
 ## createTopBarrier
 
@@ -1005,25 +1025,6 @@ fun createTopBarrier(
 ```
 
 Creates and returns a top barrier, containing the specified elements.
-
-## createEndBarrier
-
-```kotlin
-fun createEndBarrier(
-    vararg elements: ConstrainedLayoutReference,
-    margin: Dp = 0.dp
-): VerticalAnchor
-```
-Creates and returns an end barrier, containing the specified elements.
-## createAbsoluteRightBarrier
-
-```kotlin
-fun createAbsoluteRightBarrier(
-    vararg elements: ConstrainedLayoutReference,
-    margin: Dp = 0.dp
-): VerticalAnchor
-```
-Creates and returns a right barrier, containing the specified elements.
 
 ## createBottomBarrier
 
