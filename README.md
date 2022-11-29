@@ -760,7 +760,7 @@ fun MotionLayout1() {
             val ref2 = createRefFor("ref2")
             val ref3 = createRefFor("ref3")
 
-            val chain = createHorizontalChain(ref1,ref2,ref3, chainStyle = ChainStyle.)
+            val chain = createHorizontalChain(ref1,ref2,ref3, chainStyle = ChainStyle.Spread)
 
             constrain(ref1){
                 top.linkTo(parent.top, 60.dp)
@@ -797,3 +797,63 @@ fun MotionLayout1() {
 ```
 
 <img src="https://user-images.githubusercontent.com/92369023/204525879-e6d9aa2b-52b1-4b76-b42f-9d1eadff4678.png" alt="drawing" width="200"/>
+
+```kotlin
+@OptIn(ExperimentalMotionApi::class)
+@Composable
+fun MotionLayout1() {
+    MotionLayout(
+        start = ConstraintSet {
+            val ref1 = createRefFor("ref1")
+            val ref2 = createRefFor("ref2")
+            val ref3 = createRefFor("ref3")
+
+            val chain = createHorizontalChain(ref1,ref2,ref3, chainStyle = ChainStyle.Spread)
+
+            constrain(ref1){
+                top.linkTo(parent.top, 20.dp)
+                width = Dimension.fillToConstraints
+                horizontalChainWeight = 1f
+            }
+            constrain(ref2){
+                top.linkTo(parent.top, 30.dp)
+                width = Dimension.fillToConstraints
+                horizontalChainWeight = 2f
+            }
+            constrain(ref3){
+                top.linkTo(parent.top, 40.dp)
+                width = Dimension.fillToConstraints
+                horizontalChainWeight = 3f
+            }
+
+            constrain(chain){
+                start.linkTo(parent.start,75.dp)
+            }
+        },
+        end = ConstraintSet {  },
+        progress = 0f,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Box(
+            modifier = Modifier
+                .layoutId("ref1")
+                .height(50.dp)
+                .background(Color.Blue)
+        )
+        Box(
+            modifier = Modifier
+                .layoutId("ref2")
+                .height(50.dp)
+                .background(Color.Red)
+        )
+        Box(
+            modifier = Modifier
+                .layoutId("ref3")
+                .height(50.dp)
+                .background(Color.Green)
+        )
+    }
+}
+```
+
+<img src="https://user-images.githubusercontent.com/92369023/204527165-af55753e-bb79-4f79-ae4a-e3f7de5fe099.png" alt="drawing" width="200"/>
