@@ -465,3 +465,42 @@ There are few ways to mention the dimension value
 6. **percent:** `Dimension.percent(0.5f)`, 1f = 100%
 7. **preferredValue:** `Dimension.preferredValue(200.dp)`
 8. **ratio:** `Dimenstion.ratio("1:2)")`, width : height if used width = ..., height : width otherwise
+
+### Working example
+
+```kotlin
+@OptIn(ExperimentalMotionApi::class)
+@Composable
+fun MotionLayout1() {
+    MotionLayout(
+        start = ConstraintSet {
+            val box = createRefFor("box")
+            val smallBox = createRefFor("smallBox")
+
+            constrain(box){
+                centerTo(parent)
+            }
+            constrain(smallBox){
+                centerTo(box)
+                width = Dimension.value(50.dp)
+                height = Dimension.ratio("1:1")
+            }
+        },
+        end = ConstraintSet {  },
+        progress = 0f,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Box(
+            modifier = Modifier
+                .layoutId("box")
+                .size(100.dp)
+                .background(Color.Red)
+        )
+        Box(
+            modifier = Modifier
+                .layoutId("smallBox")
+                .background(Color.Blue)
+        )
+    }
+}
+```
