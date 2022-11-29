@@ -579,6 +579,13 @@ Guides are invisible anchors. We can use to place other components.
 val guide1 = createGuideFrom<side_name>(offset_in_dp or fraction)
 ```
 
+## Use
+
+```kotlin
+start.linkTo(guide1)
+top.linkTo(guide2)
+```
+
 ## Sides
 
 1. **Start:** Creates guideline from start with offset, vertical anchor, used for horizontal constraints
