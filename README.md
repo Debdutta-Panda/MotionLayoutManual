@@ -860,11 +860,199 @@ fun MotionLayout1() {
 
 # API Reference
 
-## ConstraintSet
-
-### createeRefFor
+### createRefFor
 
 ```kotlin
-fun createRefFor(id: Any)
+fun createRefFor(id: Any): ConstrainedLayoutReference
 ```
 Creates one `ConstrainedLayoutReference` corresponding to the `ConstraintLayout` element with `id`.
+
+### constrain
+
+```kotlin
+fun constrain(
+    ref: ConstrainedLayoutReference,
+    constrainBlock: ConstrainScope.() -> Unit
+): ConstrainScope
+```
+
+Specifies the constraints associated to the layout identified with `ref`
+
+```kotlin
+fun constrain(
+    ref: HorizontalChainReference,
+    constrainBlock: HorizontalChainScope.() -> Unit
+): HorizontalChainScope
+```
+
+Specifies additional constraints associated to the horizontal chain identified with `ref`.
+
+```kotlin
+fun constrain(
+    ref: VerticalChainReference,
+    constrainBlock: VerticalChainScope.() -> Unit
+): VerticalChainScope
+```
+
+Specifies additional constraints associated to the vertical chain identified with `ref`.
+
+### createGuidelineFromStart
+
+```kotlin
+fun createGuidelineFromStart(offset: Dp): VerticalAnchor
+```
+Creates a guideline at a specific offset from the start of the `ConstraintLayout`.
+```kotlin
+fun createGuidelineFromStart(fraction: Float): VerticalAnchor
+```
+
+Creates a guideline at a specific offset from the start of the `ConstraintLayout`. A `fraction` of `0f` will correspond to the start of the `ConstraintLayout`, while `1f` will correspond to the end.
+
+### createGuidelineFromEnd
+
+```kotlin
+fun createGuidelineFromEnd(offset: Dp): VerticalAnchor
+```
+
+Creates a guideline at a specific offset from the end of the `ConstraintLayout`.
+
+```kotlin
+fun createGuidelineFromEnd(fraction: Float): VerticalAnchor
+```
+
+Creates a guideline at a width fraction from the end of the `ConstraintLayout`. A `fraction` of 0f will correspond to the end of the `ConstraintLayout`, while 1f will correspond to the start.
+
+### createGuidelineFromAbsoluteLeft
+
+```kotlin
+fun createGuidelineFromAbsoluteLeft(offset: Dp): VerticalAnchor
+```
+
+Creates a guideline at a specific offset from the left of the `ConstraintLayout`.
+
+```kotlin
+fun createGuidelineFromAbsoluteLeft(fraction: Float): VerticalAnchor
+```
+
+Creates a guideline at a width fraction from the left of the `ConstraintLayout`. A `fraction` of `0f` will correspond to the left of the `ConstraintLayout`, while `1f` will correspond to the right.
+
+### createGuidelineFromAbsoluteRight
+
+```kotlin
+fun createGuidelineFromAbsoluteRight(offset: Dp): VerticalAnchor
+```
+
+Creates a guideline at a specific offset from the right of the `ConstraintLayout`.
+
+```kotlin
+fun createGuidelineFromAbsoluteRight(fraction: Float): VerticalAnchor
+```
+
+Creates a guideline at a width fraction from the right of the `ConstraintLayout`. A `fraction` of `0f` will correspond to the right of the `ConstraintLayout`, while `1f` will correspond to the left.
+
+### createGuidelineFromTop
+
+```kotlin
+fun createGuidelineFromTop(offset: Dp): HorizontalAnchor
+```
+Creates a guideline at a specific offset from the top of the `ConstraintLayout`.
+```kotlin
+fun createGuidelineFromTop(fraction: Float): HorizontalAnchor
+```
+Creates a guideline at a height percenide from the top of the `ConstraintLayout`. A `fraction` of `0f` will correspond to the top of the `ConstraintLayout`, while `1f` will correspond to the bottom.
+
+## createGuidelineFromBottom
+
+```kotlin
+fun createGuidelineFromBottom(offset: Dp): HorizontalAnchor
+```
+Creates a guideline at a specific offset from the bottom of the `ConstraintLayout`.
+### reset
+
+```kotlin
+fun createGuidelineFromBottom(fraction: Float): HorizontalAnchor
+```
+Creates a guideline at a height percenide from the bottom of the `ConstraintLayout`. A `fraction` of `0f` will correspond to the bottom of the `ConstraintLayout`, while `1f` will correspond to the top.
+```kotlin
+
+### createStartBarrier
+
+```kotlin
+fun createStartBarrier(
+    vararg elements: ConstrainedLayoutReference,
+    margin: Dp = 0.dp
+): VerticalAnchor
+```
+Creates and returns a start barrier, containing the specified elements.
+
+### crreateAbsoluteLeftBarrier
+
+```kotlin
+fun createAbsoluteLeftBarrier(
+        vararg elements: ConstrainedLayoutReference,
+        margin: Dp = 0.dp
+    ): VerticalAnchor
+```
+Creates and returns a left barrier, containing the specified elements.
+
+### createTopBarrier
+
+```kotlin
+fun createTopBarrier(
+        vararg elements: ConstrainedLayoutReference,
+        margin: Dp = 0.dp
+    ): HorizontalAnchor
+```
+
+Creates and returns a top barrier, containing the specified elements.
+
+### createEndBarrier
+
+```kotlin
+fun createEndBarrier(
+    vararg elements: ConstrainedLayoutReference,
+    margin: Dp = 0.dp
+): VerticalAnchor
+```
+Creates and returns an end barrier, containing the specified elements.
+### createAbsoluteRightBarrier
+
+```kotlin
+fun createAbsoluteRightBarrier(
+    vararg elements: ConstrainedLayoutReference,
+    margin: Dp = 0.dp
+): VerticalAnchor
+```
+Creates and returns a right barrier, containing the specified elements.
+
+### createBottomBarrier
+
+```kotlin
+fun createBottomBarrier(
+    vararg elements: ConstrainedLayoutReference,
+    margin: Dp = 0.dp
+): HorizontalAnchor
+```
+Creates and returns a bottom barrier, containing the specified elements.
+
+### createHorizontalChain
+
+```kotlin
+fun createHorizontalChain(
+    vararg elements: ConstrainedLayoutReference,
+    chainStyle: ChainStyle = ChainStyle.Spread
+): HorizontalChainReference
+```
+
+Creates a horizontal chain including the referenced layouts. Use [constrain] with the resulting [HorizontalChainReference] to modify the start/left and end/right constraints of this chain.
+
+### createVerticalChain
+
+```kotlin
+fun createVerticalChain(
+        vararg elements: ConstrainedLayoutReference,
+        chainStyle: ChainStyle = ChainStyle.Spread
+    ): VerticalChainReference
+```
+
+Creates a vertical chain including the referenced layouts. Use [constrain] with the resulting [VerticalChainReference] to modify the top and bottom constraints of this chain.
