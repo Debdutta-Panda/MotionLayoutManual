@@ -726,3 +726,16 @@ Chains can be styled in one of the following ways:
 ![image](https://user-images.githubusercontent.com/92369023/204440329-8e55a246-20b2-4b82-a072-34d5be5bb299.png)
 
 ![image](https://user-images.githubusercontent.com/92369023/204440354-015273e6-5f52-4a10-906c-af9fff691d0e.png)
+
+## Types
+
+There are two type of chain
+
+1. Horizontal
+2. Vertical
+
+## Syntax
+
+```kotlin
+val <name> = create<Horizontal or Vertical>Chain(ref1, ref2, ..., chainStyle = <Chain Style>)
+```
