@@ -506,3 +506,65 @@ fun MotionLayout1() {
 ```
 
 <img src="https://user-images.githubusercontent.com/92369023/204431084-11fc75fa-987f-4d48-a72c-b849419e0410.png" alt="drawing" width="200"/>
+
+## Transformation constraints
+
+* pivotX
+* pivotY
+* scaleX
+* scaleY
+* rotationX
+* rotationY
+* rotationZ
+* translationX
+* translationY
+* translationZ
+
+### Syntax
+
+```kotlin
+<constraint_name> = float_value
+```
+
+### Working example
+
+```kotlin
+@OptIn(ExperimentalMotionApi::class)
+@Composable
+fun MotionLayout1() {
+    MotionLayout(
+        start = ConstraintSet {
+            val box = createRefFor("box")
+            val smallBox = createRefFor("smallBox")
+
+            constrain(box){
+                centerTo(parent)
+            }
+            constrain(smallBox){
+                centerTo(box)
+                width = Dimension.value(100.dp)
+                height = Dimension.ratio("1:1")
+                scaleX = 0.5f
+                rotationZ = 45f
+            }
+        },
+        end = ConstraintSet {  },
+        progress = 0f,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Box(
+            modifier = Modifier
+                .layoutId("box")
+                .size(100.dp)
+                .background(Color.Red)
+        )
+        Box(
+            modifier = Modifier
+                .layoutId("smallBox")
+                .background(Color.Blue)
+        )
+    }
+}
+```
+
+<img src="https://user-images.githubusercontent.com/92369023/204432247-7b98a477-af6c-482a-a586-175ff2391b39.png" alt="drawing" width="200"/>
