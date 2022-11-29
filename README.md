@@ -722,3 +722,7 @@ Chains can be styled in one of the following ways:
 **Weighted:** When the chain is set to either spread or spread inside, you can fill the remaining space by setting one or more views to "match constraints" (0dp). By default, the space is evenly distributed between each view that's set to "match constraints," but you can assign a weight of importance to each view using the weight attributes. If you're familiar with layout_weight in a linear layout, this works the same way. So the view with the highest weight value gets the most amount of space; views that have the same weight get the same amount of space.
 
 **Packed:** The views are packed together (after margins are accounted for). You can then adjust the whole chain's bias (left/right or up/down) by changing the chain's head view bias.
+
+![image](https://user-images.githubusercontent.com/92369023/204440329-8e55a246-20b2-4b82-a072-34d5be5bb299.png)
+
+![image](https://user-images.githubusercontent.com/92369023/204440354-015273e6-5f52-4a10-906c-af9fff691d0e.png)
