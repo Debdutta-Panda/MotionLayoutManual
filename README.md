@@ -860,7 +860,7 @@ fun MotionLayout1() {
 
 # API Reference
 
-## ConstraintSet APIs
+## ConstraintSetScope APIs
 
 ## createRefFor
 
