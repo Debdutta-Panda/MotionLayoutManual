@@ -739,3 +739,61 @@ There are two type of chain
 ```kotlin
 val <name> = create<Horizontal or Vertical>Chain(ref1, ref2, ..., chainStyle = <Chain Style>)
 ```
+
+## Chain style
+
+There are 3 types of chain
+
+1. Spread
+2. Packed
+3. SpreadInside
+
+## Working example
+
+```kotlin
+@OptIn(ExperimentalMotionApi::class)
+@Composable
+fun MotionLayout1() {
+    MotionLayout(
+        start = ConstraintSet {
+            val ref1 = createRefFor("ref1")
+            val ref2 = createRefFor("ref2")
+            val ref3 = createRefFor("ref3")
+
+            val chain = createHorizontalChain(ref1,ref2,ref3, chainStyle = ChainStyle.)
+
+            constrain(ref1){
+                top.linkTo(parent.top, 60.dp)
+            }
+
+            constrain(chain){
+                start.linkTo(parent.start,75.dp)
+            }
+        },
+        end = ConstraintSet {  },
+        progress = 0f,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Box(
+            modifier = Modifier
+                .layoutId("ref1")
+                .size(50.dp)
+                .background(Color.Blue)
+        )
+        Box(
+            modifier = Modifier
+                .layoutId("ref2")
+                .size(50.dp)
+                .background(Color.Red)
+        )
+        Box(
+            modifier = Modifier
+                .layoutId("ref3")
+                .size(50.dp)
+                .background(Color.Green)
+        )
+    }
+}
+```
+
+<img src="https://user-images.githubusercontent.com/92369023/204525879-e6d9aa2b-52b1-4b76-b42f-9d1eadff4678.png" alt="drawing" width="200"/>
