@@ -860,14 +860,14 @@ fun MotionLayout1() {
 
 # API Reference
 
-### createRefFor
+## createRefFor
 
 ```kotlin
 fun createRefFor(id: Any): ConstrainedLayoutReference
 ```
 Creates one `ConstrainedLayoutReference` corresponding to the `ConstraintLayout` element with `id`.
 
-### constrain
+## constrain
 
 ```kotlin
 fun constrain(
@@ -896,7 +896,7 @@ fun constrain(
 
 Specifies additional constraints associated to the vertical chain identified with `ref`.
 
-### createGuidelineFromStart
+## createGuidelineFromStart
 
 ```kotlin
 fun createGuidelineFromStart(offset: Dp): VerticalAnchor
@@ -908,7 +908,7 @@ fun createGuidelineFromStart(fraction: Float): VerticalAnchor
 
 Creates a guideline at a specific offset from the start of the `ConstraintLayout`. A `fraction` of `0f` will correspond to the start of the `ConstraintLayout`, while `1f` will correspond to the end.
 
-### createGuidelineFromEnd
+## createGuidelineFromEnd
 
 ```kotlin
 fun createGuidelineFromEnd(offset: Dp): VerticalAnchor
@@ -922,7 +922,7 @@ fun createGuidelineFromEnd(fraction: Float): VerticalAnchor
 
 Creates a guideline at a width fraction from the end of the `ConstraintLayout`. A `fraction` of 0f will correspond to the end of the `ConstraintLayout`, while 1f will correspond to the start.
 
-### createGuidelineFromAbsoluteLeft
+## createGuidelineFromAbsoluteLeft
 
 ```kotlin
 fun createGuidelineFromAbsoluteLeft(offset: Dp): VerticalAnchor
@@ -936,7 +936,7 @@ fun createGuidelineFromAbsoluteLeft(fraction: Float): VerticalAnchor
 
 Creates a guideline at a width fraction from the left of the `ConstraintLayout`. A `fraction` of `0f` will correspond to the left of the `ConstraintLayout`, while `1f` will correspond to the right.
 
-### createGuidelineFromAbsoluteRight
+## createGuidelineFromAbsoluteRight
 
 ```kotlin
 fun createGuidelineFromAbsoluteRight(offset: Dp): VerticalAnchor
@@ -950,7 +950,7 @@ fun createGuidelineFromAbsoluteRight(fraction: Float): VerticalAnchor
 
 Creates a guideline at a width fraction from the right of the `ConstraintLayout`. A `fraction` of `0f` will correspond to the right of the `ConstraintLayout`, while `1f` will correspond to the left.
 
-### createGuidelineFromTop
+## createGuidelineFromTop
 
 ```kotlin
 fun createGuidelineFromTop(offset: Dp): HorizontalAnchor
@@ -967,15 +967,13 @@ Creates a guideline at a height percenide from the top of the `ConstraintLayout`
 fun createGuidelineFromBottom(offset: Dp): HorizontalAnchor
 ```
 Creates a guideline at a specific offset from the bottom of the `ConstraintLayout`.
-### reset
 
 ```kotlin
 fun createGuidelineFromBottom(fraction: Float): HorizontalAnchor
 ```
 Creates a guideline at a height percenide from the bottom of the `ConstraintLayout`. A `fraction` of `0f` will correspond to the bottom of the `ConstraintLayout`, while `1f` will correspond to the top.
-```kotlin
 
-### createStartBarrier
+## createStartBarrier
 
 ```kotlin
 fun createStartBarrier(
@@ -985,7 +983,7 @@ fun createStartBarrier(
 ```
 Creates and returns a start barrier, containing the specified elements.
 
-### crreateAbsoluteLeftBarrier
+## crreateAbsoluteLeftBarrier
 
 ```kotlin
 fun createAbsoluteLeftBarrier(
@@ -995,7 +993,7 @@ fun createAbsoluteLeftBarrier(
 ```
 Creates and returns a left barrier, containing the specified elements.
 
-### createTopBarrier
+## createTopBarrier
 
 ```kotlin
 fun createTopBarrier(
@@ -1006,7 +1004,7 @@ fun createTopBarrier(
 
 Creates and returns a top barrier, containing the specified elements.
 
-### createEndBarrier
+## createEndBarrier
 
 ```kotlin
 fun createEndBarrier(
@@ -1015,7 +1013,7 @@ fun createEndBarrier(
 ): VerticalAnchor
 ```
 Creates and returns an end barrier, containing the specified elements.
-### createAbsoluteRightBarrier
+## createAbsoluteRightBarrier
 
 ```kotlin
 fun createAbsoluteRightBarrier(
@@ -1025,7 +1023,7 @@ fun createAbsoluteRightBarrier(
 ```
 Creates and returns a right barrier, containing the specified elements.
 
-### createBottomBarrier
+## createBottomBarrier
 
 ```kotlin
 fun createBottomBarrier(
@@ -1035,7 +1033,7 @@ fun createBottomBarrier(
 ```
 Creates and returns a bottom barrier, containing the specified elements.
 
-### createHorizontalChain
+## createHorizontalChain
 
 ```kotlin
 fun createHorizontalChain(
@@ -1046,7 +1044,7 @@ fun createHorizontalChain(
 
 Creates a horizontal chain including the referenced layouts. Use [constrain] with the resulting [HorizontalChainReference] to modify the start/left and end/right constraints of this chain.
 
-### createVerticalChain
+## createVerticalChain
 
 ```kotlin
 fun createVerticalChain(
