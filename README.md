@@ -634,4 +634,4 @@ fun MotionLayout1() {
 }
 ```
 
-![image](https://user-images.githubusercontent.com/92369023/204434973-de654e91-d851-4656-bb63-260cfa5e419b.png)
+<img src="https://user-images.githubusercontent.com/92369023/204434973-de654e91-d851-4656-bb63-260cfa5e419b.png" alt="drawing" width="200"/>
