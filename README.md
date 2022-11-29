@@ -857,3 +857,14 @@ fun MotionLayout1() {
 ```
 
 <img src="https://user-images.githubusercontent.com/92369023/204527165-af55753e-bb79-4f79-ae4a-e3f7de5fe099.png" alt="drawing" width="200"/>
+
+# API Reference
+
+## ConstraintSet
+
+### createeRefFor
+
+```kotlin
+fun createRefFor(id: Any)
+```
+Creates one `ConstrainedLayoutReference` corresponding to the `ConstraintLayout` element with `id`.
