@@ -862,6 +862,13 @@ fun MotionLayout1() {
 
 ## ConstraintSetScope APIs
 
+## setup
+```kotlin
+ConstraintSet {
+  //can use apis here
+}
+```
+
 ## createRefFor
 
 ```kotlin
@@ -1058,7 +1065,17 @@ fun createVerticalChain(
 
 Creates a vertical chain including the referenced layouts. Use [constrain] with the resulting [VerticalChainReference] to modify the top and bottom constraints of this chain.
 
-# ConstrainedLayoutReference APIs
+# ConstrainScope APIs
+
+## Setup
+```kotlin
+ConstraintSet {
+  var ref1 = createRefFor("ref1")
+  constrain(ref1){
+    //can use apis here
+  }
+}
+```
 
 ## parent
 ```kotlin
@@ -1324,6 +1341,17 @@ Useful when extending another `ConstraintSet` with unwanted transforms applied.
 
 # HorizontalChainReference APIs
 
+## Setup
+```kotlin
+ConstraintSet {
+  val ref1 = createRefFor("ref1")
+  val ref2 = createRefFor("ref2")
+  val ref3 = createRefFor("ref3")
+  val chain = createHorizontalChain(ref1,ref2,ref3, chainStyle = ChainStyle.Spread)
+  chain.can_use_api_here
+}
+```
+
 ## start
 ```kotlin
 val start: ConstraintLayoutBaseScope.VerticalAnchor
@@ -1349,6 +1377,17 @@ val absoluteRight: ConstraintLayoutBaseScope.VerticalAnchor
 The right anchor of the last element in the chain.
 
 # VerticalChainReference APIs
+
+## Setup
+```kotlin
+ConstraintSet {
+  val ref1 = createRefFor("ref1")
+  val ref2 = createRefFor("ref2")
+  val ref3 = createRefFor("ref3")
+  val chain = createVerticalChain(ref1,ref2,ref3, chainStyle = ChainStyle.Spread)
+  chain.can_use_api_here
+}
+```
 
 ## top
 ```kotlin
