@@ -1321,3 +1321,43 @@ fun resetTransforms()
 ```
 Reset all render-time transforms of the content to their default values. Does not modify the `visibility` property.
 Useful when extending another `ConstraintSet` with unwanted transforms applied.
+
+# HorizontalChainReference APIs
+
+## start
+```kotlin
+val start: ConstraintLayoutBaseScope.VerticalAnchor
+```
+The start anchor of the first element in the chain. Represents left in LTR layout direction, or right in RTL.
+
+## absoluteLeft
+```kotlin
+val absoluteLeft: ConstraintLayoutBaseScope.VerticalAnchor
+```
+The left anchor of the first element in the chain.
+
+## end
+```kotlin
+val end: ConstraintLayoutBaseScope.VerticalAnchor
+```
+The end anchor of the last element in the chain. Represents right in LTR layout direction, or left in RTL.
+
+## absoluteRight
+```kotlin
+val absoluteRight: ConstraintLayoutBaseScope.VerticalAnchor
+```
+The right anchor of the last element in the chain.
+
+# VerticalChainReference APIs
+
+## top
+```kotlin
+val top: ConstraintLayoutBaseScope.HorizontalAnchor
+```
+The top anchor of the first element in the chain.
+
+## bottom
+```kotlin
+val bottom: ConstraintLayoutBaseScope.HorizontalAnchor
+```
+The bottom anchor of the last element in the chain.
