@@ -1411,7 +1411,7 @@ ConstraintSet {
   val ref3 = createRefFor("ref3")
   val chain = createHorizontalChain(ref1,ref2,ref3, chainStyle = ChainStyle.Spread)
   constrain(chain){
-      start.linkTo(parent.start)
+      // can use here
   }
 }
 ```
@@ -1456,7 +1456,7 @@ ConstraintSet {
   val ref3 = createRefFor("ref3")
   val chain = createVerticalChain(ref1,ref2,ref3, chainStyle = ChainStyle.Spread)
   constrain(chain){
-      top.linkTo(parent.top)
+      //can use heere
   }
 }
 ```
