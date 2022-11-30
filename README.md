@@ -1361,3 +1361,35 @@ The top anchor of the first element in the chain.
 val bottom: ConstraintLayoutBaseScope.HorizontalAnchor
 ```
 The bottom anchor of the last element in the chain.
+
+# HorizontalChainScope APIs
+
+## parent
+```kotlin
+val parent: ConstrainedLayoutReference
+```
+Reference to the `ConstraintLayout` itself, which can be used to specify constraints between itself and its children.
+
+## start
+```kotlin
+val start: VerticalAnchorable
+```
+The start anchor of the chain - can be constrained using `VerticalAnchorable.linkTo`.
+
+## absoluteLeft
+```kotlin
+val absoluteLeft: VerticalAnchorable
+```
+The left anchor of the chain - can be constrained using `VerticalAnchorable.linkTo`.
+
+## end
+```kotlin
+val end: VerticalAnchorable
+```
+The end anchor of the chain - can be constrained using `VerticalAnchorable.linkTo`.
+
+## absoluteRight
+```kotlin
+val absoluteRight: VerticalAnchorable
+```
+The right anchor of the chain - can be constrained using `VerticalAnchorable.linkTo`.
