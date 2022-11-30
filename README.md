@@ -1393,3 +1393,23 @@ The end anchor of the chain - can be constrained using `VerticalAnchorable.linkT
 val absoluteRight: VerticalAnchorable
 ```
 The right anchor of the chain - can be constrained using `VerticalAnchorable.linkTo`.
+
+# VerticalChainScope
+
+## parent
+```kotlin
+val parent: ConstrainedLayoutReference
+```
+Reference to the `ConstraintLayout` itself, which can be used to specify constraints between itself and its children.
+
+## top
+```kotlin
+val top: HorizontalAnchorable
+```
+The top anchor of the chain - can be constrained using `VerticalAnchorable.linkTo`.
+
+## bottom
+```kotlin
+val bottom: HorizontalAnchorable
+```
+The bottom anchor of the chain - can be constrained using `VerticalAnchorable.linkTo`.
