@@ -1403,6 +1403,19 @@ The bottom anchor of the last element in the chain.
 
 # HorizontalChainScope APIs
 
+## Setup
+```kotlin
+ConstraintSet {
+  val ref1 = createRefFor("ref1")
+  val ref2 = createRefFor("ref2")
+  val ref3 = createRefFor("ref3")
+  val chain = createHorizontalChain(ref1,ref2,ref3, chainStyle = ChainStyle.Spread)
+  constrain(chain){
+      start.linkTo(parent.start)
+  }
+}
+```
+
 ## parent
 ```kotlin
 val parent: ConstrainedLayoutReference
@@ -1434,6 +1447,19 @@ val absoluteRight: VerticalAnchorable
 The right anchor of the chain - can be constrained using `VerticalAnchorable.linkTo`.
 
 # VerticalChainScope
+
+## Setup
+```kotlin
+ConstraintSet {
+  val ref1 = createRefFor("ref1")
+  val ref2 = createRefFor("ref2")
+  val ref3 = createRefFor("ref3")
+  val chain = createVerticalChain(ref1,ref2,ref3, chainStyle = ChainStyle.Spread)
+  constrain(chain){
+      top.linkTo(parent.top)
+  }
+}
+```
 
 ## parent
 ```kotlin
