@@ -2417,3 +2417,63 @@ fun MotionLayout1() {
 
 ![rope](https://user-images.githubusercontent.com/92369023/205124973-c2526129-a3c7-4e02-be87-27847b5564a9.gif)
 
+```kotlin
+@OptIn(ExperimentalMotionApi::class)
+@Composable
+fun MotionLayout1() {
+    var progress by remember {
+        mutableStateOf(0f)
+    }
+    val count = 48
+    MotionLayout(
+        start = ConstraintSet {
+            val slider = createRefFor("slider")
+            constrain(slider){
+                bottom.linkTo(parent.bottom)
+            }
+            for(i in 0 until count){
+                val ref = createRefFor("$i")
+                constrain(ref){
+                    circular(parent,(i+1)*30f,(i*i*0.16f+i*1.8f).dp)
+                }
+            }
+        },
+        end = ConstraintSet {
+            val slider = createRefFor("slider")
+            constrain(slider){
+                bottom.linkTo(parent.bottom)
+            }
+            val list = MutableList(count){
+                val ref = createRefFor("$it")
+                constrain(ref){
+                    centerHorizontallyTo(parent)
+                }
+                ref
+            }
+            createVerticalChain(*list.toTypedArray(), chainStyle = ChainStyle.Packed)
+        },
+        progress = progress,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        for(i in 0 until count){
+            Text(
+                "${(i%12)+1}",
+                modifier = Modifier
+                    .layoutId("$i"),
+                fontSize = (i*2f*(1f-progress*0.5)).sp
+            )
+        }
+        Slider(
+            modifier = Modifier
+                .layoutId("slider")
+                .padding(24.dp),
+            value = progress,
+            onValueChange = {
+                progress = it
+            }
+        )
+    }
+}
+```
+
+![clock_coil](https://user-images.githubusercontent.com/92369023/205133738-d6e59012-0ac1-4ee2-842f-c48932510cdc.gif)
