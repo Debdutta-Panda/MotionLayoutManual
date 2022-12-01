@@ -1869,3 +1869,51 @@ fun MotionLayout1() {
 ```
 
 ![center_to_parent](https://user-images.githubusercontent.com/92369023/204998962-a6d24d0a-06e5-44a2-ac79-a6b0cff20bf3.gif)
+
+```kotlin
+@OptIn(ExperimentalMotionApi::class)
+@Composable
+fun MotionLayout1() {
+    Box(){
+        var progress by remember {
+            mutableStateOf(0f)
+        }
+
+        MotionLayout(
+            start = ConstraintSet {
+                val ref1 = createRefFor("ref1")
+                constrain(ref1){
+                    centerTo(parent)
+                    width = Dimension.fillToConstraints
+                    height = Dimension.fillToConstraints
+                }
+            },
+            end = ConstraintSet {
+                val ref1 = createRefFor("ref1")
+                constrain(ref1){
+                    top.linkTo(parent.top)
+                    end.linkTo(parent.end)
+                    width = Dimension.value(50.dp)
+                    height = Dimension.ratio("1:1")
+                }
+            },
+            progress = progress,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            Box(
+                modifier = Modifier
+                    .layoutId("ref1")
+                    .background(Color.Red)
+            )
+        }
+        Slider(
+            value = progress,
+            onValueChange = {
+                progress = it
+            }
+        )
+    }
+}
+```
+
+![fillToConstraints](https://user-images.githubusercontent.com/92369023/205025209-d5ea8eea-db33-4d52-ab2e-acaa0b7c61a4.gif)
