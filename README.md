@@ -2352,3 +2352,68 @@ fun MotionLayout1() {
 ```
 
 ![morphing](https://user-images.githubusercontent.com/92369023/205112531-4c739646-f3f3-4193-b4b1-d44af2546af4.gif)
+
+```kotlin
+@OptIn(ExperimentalMotionApi::class)
+@Composable
+fun MotionLayout1() {
+    var progress by remember {
+        mutableStateOf(0f)
+    }
+    val count = 170
+    MotionLayout(
+        start = ConstraintSet {
+            val slider = createRefFor("slider")
+            constrain(slider){
+                bottom.linkTo(parent.bottom)
+            }
+            for(i in 0 until count){
+                val ref = createRefFor("$i")
+                constrain(ref){
+                    circular(parent,i*(360f/count),60.dp)
+                    rotationZ = i*(360f/count)
+                }
+            }
+        },
+        end = ConstraintSet {
+            val slider = createRefFor("slider")
+            constrain(slider){
+                bottom.linkTo(parent.bottom)
+            }
+            val list = MutableList(count){
+                Log.d("fldjkfdfd","$it")
+                val ref = createRefFor("$it")
+                constrain(ref){
+                    centerVerticallyTo(parent)
+                }
+                ref
+            }
+            createHorizontalChain(*list.toTypedArray(), chainStyle = ChainStyle.Packed)
+        },
+        progress = progress,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        for(i in 0 until count){
+            Box(
+                modifier = Modifier
+                    .layoutId("$i")
+                    .width(2.dp)
+                    .height(1.dp)
+                    .background(Color.Black)
+            )
+        }
+        Slider(
+            modifier = Modifier
+                .layoutId("slider")
+                .padding(24.dp),
+            value = progress,
+            onValueChange = {
+                progress = it
+            }
+        )
+    }
+}
+```
+
+![rope](https://user-images.githubusercontent.com/92369023/205124973-c2526129-a3c7-4e02-be87-27847b5564a9.gif)
+
