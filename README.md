@@ -1917,3 +1917,145 @@ fun MotionLayout1() {
 ```
 
 ![fillToConstraints](https://user-images.githubusercontent.com/92369023/205025209-d5ea8eea-db33-4d52-ab2e-acaa0b7c61a4.gif)
+
+```kotlin
+@OptIn(ExperimentalMotionApi::class)
+@Composable
+fun MotionLayout1() {
+    Box(){
+        var progress by remember {
+            mutableStateOf(0f)
+        }
+
+        MotionLayout(
+            start = ConstraintSet {
+                val center = createRefFor("center")
+                val centerDot = createRefFor("centerDot")
+                val mint = createRefFor("mint")
+                val hour = createRefFor("hour")
+
+                constrain(mint){
+                    centerHorizontallyTo(parent)
+                    bottom.linkTo(center.bottom)
+                    rotationZ = 0f
+                    pivotX = 0.5f
+                    pivotY = 1f
+                }
+                constrain(hour){
+                    centerHorizontallyTo(parent)
+                    bottom.linkTo(center.bottom)
+                    rotationZ = 0f
+                    pivotX = 0.5f
+                    pivotY = 1f
+                }
+
+                constrain(center){
+                    centerTo(parent)
+                }
+
+                constrain(centerDot){
+                    centerTo(parent)
+                }
+
+                for(i in 0..11){
+                    val ref = createRefFor("$i")
+                    constrain(ref){
+                        circular(
+                            other = center,
+                            angle = (i+1)*30f,
+                            distance = 60.dp
+                        )
+                    }
+                }
+            },
+            end = ConstraintSet {
+                val center = createRefFor("center")
+                val centerDot = createRefFor("centerDot")
+                val mint = createRefFor("mint")
+                val hour = createRefFor("hour")
+
+                constrain(mint){
+                    centerHorizontallyTo(parent)
+                    bottom.linkTo(center.bottom)
+                    rotationZ = 360f
+                    pivotX = 0.5f
+                    pivotY = 1f
+                }
+                constrain(hour){
+                    centerHorizontallyTo(parent)
+                    bottom.linkTo(center.bottom)
+                    rotationZ = 30f
+                    pivotX = 0.5f
+                    pivotY = 1f
+                }
+
+                constrain(center){
+                    centerTo(parent)
+                }
+
+                constrain(centerDot){
+                    centerTo(parent)
+                }
+
+                for(i in 0..11){
+                    val ref = createRefFor("$i")
+                    constrain(ref){
+                        circular(
+                            other = center,
+                            angle = (i+1)*30f,
+                            distance = 60.dp
+                        )
+                    }
+                }
+            },
+            progress = progress,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            Box(
+                modifier = Modifier
+                    .layoutId("center")
+                    .size(0.dp)
+            )
+
+            Box(
+                modifier = Modifier
+                    .layoutId("centerDot")
+                    .size(10.dp)
+                    .clip(CircleShape)
+                    .background(Color.Black)
+            )
+            for(i in 0..11){
+                Text(
+                    "${i + 1}",
+                    modifier = Modifier
+                        .layoutId("$i")
+                )
+            }
+
+            Box(
+                modifier = Modifier
+                    .layoutId("hour")
+                    .width(7.dp)
+                    .height(30.dp)
+                    .background(Color.Blue)
+            )
+
+            Box(
+                modifier = Modifier
+                    .layoutId("mint")
+                    .width(5.dp)
+                    .height(50.dp)
+                    .background(Color.Red)
+            )
+        }
+        Slider(
+            value = progress,
+            onValueChange = {
+                progress = it
+            }
+        )
+    }
+}
+```
+
+![clock](https://user-images.githubusercontent.com/92369023/205028217-ad6d88bf-b70b-4da0-bb49-e7ce436aab7d.gif)
