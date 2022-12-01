@@ -1669,4 +1669,5 @@ fun MotionLayout1() {
         )
     }
 }
+
 ![simple_diagonal_move](https://user-images.githubusercontent.com/92369023/204976348-5790c913-365f-475b-bf63-7e62c96ebbfd.gif)
