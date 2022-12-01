@@ -1628,4 +1628,45 @@ fun MotionLayout1() {
 ```
 ![simple_start_end](https://user-images.githubusercontent.com/92369023/204975746-b94a3d00-a358-4fbe-ab2f-a64238acf6ec.gif)
 
+@OptIn(ExperimentalMotionApi::class)
+@Composable
+fun MotionLayout1() {
+    Box(){
+        var progress by remember {
+            mutableStateOf(0f)
+        }
 
+        MotionLayout(
+            start = ConstraintSet {
+                val ref1 = createRefFor("ref1")
+                constrain(ref1){
+                    top.linkTo(parent.top)
+                    start.linkTo(parent.start)
+                }
+            },
+            end = ConstraintSet {
+                val ref1 = createRefFor("ref1")
+                constrain(ref1){
+                    bottom.linkTo(parent.bottom)
+                    end.linkTo(parent.end)
+                }
+            },
+            progress = progress,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            Box(
+                modifier = Modifier
+                    .layoutId("ref1")
+                    .size(100.dp)
+                    .background(Color.Red)
+            )
+        }
+        Slider(
+            value = progress,
+            onValueChange = {
+                progress = it
+            }
+        )
+    }
+}
+![simple_diagonal_move](https://user-images.githubusercontent.com/92369023/204976348-5790c913-365f-475b-bf63-7e62c96ebbfd.gif)
