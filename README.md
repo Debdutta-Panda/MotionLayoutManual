@@ -1582,7 +1582,6 @@ A `Dimension` that is a percent of the parent in the corresponding direction.
 
 # Examples
 
-## Minimal
 ```kotlin
 @OptIn(ExperimentalMotionApi::class)
 @Composable
@@ -1671,3 +1670,50 @@ fun MotionLayout1() {
 }
 
 ![simple_diagonal_move](https://user-images.githubusercontent.com/92369023/204976348-5790c913-365f-475b-bf63-7e62c96ebbfd.gif)
+
+@OptIn(ExperimentalMotionApi::class)
+@Composable
+fun MotionLayout1() {
+    Box(){
+        var progress by remember {
+            mutableStateOf(0f)
+        }
+
+        MotionLayout(
+            start = ConstraintSet {
+                val ref1 = createRefFor("ref1")
+                constrain(ref1){
+                    top.linkTo(parent.top)
+                    start.linkTo(parent.start)
+                    width = Dimension.value(100.dp)
+                    height = width
+                }
+            },
+            end = ConstraintSet {
+                val ref1 = createRefFor("ref1")
+                constrain(ref1){
+                    bottom.linkTo(parent.bottom)
+                    end.linkTo(parent.end)
+                    width = Dimension.value(50.dp)
+                    height = width
+                }
+            },
+            progress = progress,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            Box(
+                modifier = Modifier
+                    .layoutId("ref1")
+                    .background(Color.Red)
+            )
+        }
+        Slider(
+            value = progress,
+            onValueChange = {
+                progress = it
+            }
+        )
+    }
+}
+
+![dimension](https://user-images.githubusercontent.com/92369023/204977090-7021c303-6d0e-45ca-9c25-942086e7e0ff.gif)
