@@ -1,7 +1,8 @@
+
 # MotionLayoutManual
 
 # Introduction
-This is the documentation of Jetpack Compose MotionLayout.
+This is the comprehensive documentation of Jetpack Compose MotionLayout.
 
 # Motive
 
@@ -337,12 +338,12 @@ fun MotionLayout1() {
 
 ### Centering methods
 
-1. centerTo
-2. centerHorizontalTo
-3. centerVerticalTo
-4. centerAround: There are 2 variation, one for horizontal another for vertical
+**1. centerTo**
+**2. centerHorizontalTo**
+**3. centerVerticalTo**
+**4. centerAround:** There are 2 variation, one for `horizontal` another for `vertical`
 
-### Working exaampe
+### Working example
 
 ```kotlin
 @OptIn(ExperimentalMotionApi::class)
@@ -445,8 +446,8 @@ fun MotionLayout1() {
 
 # Dimension constraints
 
-1. width
-2. height
+**1. width**
+**2. height**
 ## Syntax
 
 ```kotlin
@@ -457,14 +458,14 @@ fun MotionLayout1() {
 
 There are few ways to mention the dimension value
 
-1. **value in Dp:** `Dimension.value(20.dp)`
-2. **wrapContent:** `Dimension.wrapContent`
-3. **fillToConstraintss:** `Dimension.fillToConstraints`
-4. **preferredWrapContent:** `Dimension.preferredWrapContent`
-5. **matchParent:** `Dimension.matchParent`
-6. **percent:** `Dimension.percent(0.5f)`, 1f = 100%
-7. **preferredValue:** `Dimension.preferredValue(200.dp)`
-8. **ratio:** `Dimenstion.ratio("1:2)")`, width : height if used width = ..., height : width otherwise
+**1. value in Dp:** `Dimension.value(20.dp)`
+**2. wrapContent:** `Dimension.wrapContent`
+**3. fillToConstraintss:** `Dimension.fillToConstraints`
+**4. preferredWrapContent:** `Dimension.preferredWrapContent`
+**5. matchParent:** `Dimension.matchParent`
+**6. percent:** `Dimension.percent(0.5f)`, 1f = 100%
+**7. preferredValue:** `Dimension.preferredValue(200.dp)`
+**8. ratio:** `Dimenstion.ratio("1:2)")`, width : height if used width = ..., height : width otherwise
 
 ### Working example
 
@@ -509,16 +510,16 @@ fun MotionLayout1() {
 
 ## Transformation constraints
 
-* pivotX
-* pivotY
-* scaleX
-* scaleY
-* rotationX
-* rotationY
-* rotationZ
-* translationX
-* translationY
-* translationZ
+* **pivotX**
+* **pivotY**
+* **scaleX**
+* **scaleY**
+* **rotationX**
+* **rotationY**
+* **rotationZ**
+* **translationX**
+* **translationY**
+* **translationZ**
 
 ### Syntax
 
@@ -569,9 +570,9 @@ fun MotionLayout1() {
 
 <img src="https://user-images.githubusercontent.com/92369023/204432247-7b98a477-af6c-482a-a586-175ff2391b39.png" alt="drawing" width="200"/>
 
-# Guide
+# Guides
 
-Guides are invisible anchors. We can use to place other components.
+Guides are invisible anchors. We can use this to place other components.
 
 ## Create guide
 
@@ -588,12 +589,12 @@ top.linkTo(guide2)
 
 ## Sides
 
-1. **Start:** Creates guideline from start with offset, vertical anchor, used for horizontal constraints
-2. **AbsoluteLeft:** Create guideline from left with offset, vertical anchor, used for horizontal constraints
-3. **End:** Create guideline from end with offset, vertical anchor, used for horizontal constraints
-4. **AbsoluteRight:** Create guideline from right with offset, vertical anchor, used for horizontal constraints
-5. **Top:** Create guideline from top with offset, horizontal anchor, used for vertical constraints
-6. **Bottom:** Create guideline from bottom with offset, horizontal anchor, used for vertical constraints
+**1. Start:** Creates guideline from start with offset, vertical anchor, used for horizontal constraints
+**2. AbsoluteLeft:** Create guideline from left with offset, vertical anchor, used for horizontal constraints
+**3. End:** Create guideline from end with offset, vertical anchor, used for horizontal constraints
+**4. AbsoluteRight:** Create guideline from right with offset, vertical anchor, used for horizontal constraints
+**5. Top:** Create guideline from top with offset, horizontal anchor, used for vertical constraints
+**6. Bottom:** Create guideline from bottom with offset, horizontal anchor, used for vertical constraints
 
 ## Working example
 
@@ -636,7 +637,7 @@ fun MotionLayout1() {
 
 <img src="https://user-images.githubusercontent.com/92369023/204434973-de654e91-d851-4656-bb63-260cfa5e419b.png" alt="drawing" width="200"/>
 
-# Barrier
+# Barriers
 
 A Barrier references multiple constrained-references as input, and creates a virtual guideline based on the most extreme widget on the specified side. For example, a left barrier will align to the left of all the referenced items.
 
@@ -648,12 +649,12 @@ val <name> = create<side_name>Barrier(ref1, ref2, margin_in_dp)
 
 ## Sides
 
-1. **Start:** Creates vertical anchor, used for horizontal constraint
-2. **End:** Creates vertical anchor, used for horizontal constraint
-3. **Top:** Creates horizontal anchor, used for vertical constraint
-4. **Bottom:** Creates horizontal anchor, used for vertical constraint
-5. **AbsoluteLeft:** Creates vertical anchor, used for horizontal constraint
-6. **AbsoluteRight:** Creates vertical anchor, used for horizontal constraint
+**1. Start:** Creates vertical anchor, used for horizontal constraint
+**2. End:** Creates vertical anchor, used for horizontal constraint
+**3. Top:** Creates horizontal anchor, used for vertical constraint
+**4. Bottom:** Creates horizontal anchor, used for vertical constraint
+**5. AbsoluteLeft:** Creates vertical anchor, used for horizontal constraint
+**6. AbsoluteRight:** Creates vertical anchor, used for horizontal constraint
 
 ## Working example
 
@@ -707,7 +708,7 @@ fun MotionLayout1() {
 
 <img src="https://user-images.githubusercontent.com/92369023/204437809-9f5c5493-1070-4bac-82e6-2c84b22ffe7d.png" alt="drawing" width="200"/>
 
-# Chain
+# Chains
 
 A chain is a group of views that are linked to each other with bi-directional position constraints. The views within a chain can be distributed either vertically or horizontally.
 
@@ -729,10 +730,10 @@ Chains can be styled in one of the following ways:
 
 ## Types
 
-There are two type of chain
+There are two type of chains
 
-1. Horizontal
-2. Vertical
+**1. Horizontal**
+**2. Vertical**
 
 ## Syntax
 
@@ -740,13 +741,13 @@ There are two type of chain
 val <name> = create<Horizontal or Vertical>Chain(ref1, ref2, ..., chainStyle = <Chain Style>)
 ```
 
-## Chain style
+## Chain styles
 
-There are 3 types of chain
+There are 3 types of chains
 
-1. Spread
-2. Packed
-3. SpreadInside
+**1. Spread**
+**2. Packed**
+**3. SpreadInside**
 
 ## Working example
 
@@ -1478,3 +1479,103 @@ The top anchor of the chain - can be constrained using `VerticalAnchorable.linkT
 val bottom: HorizontalAnchorable
 ```
 The bottom anchor of the chain - can be constrained using `VerticalAnchorable.linkTo`.
+
+# ChainStyle APIs
+
+## Setup
+```kotlin
+ConstraintSet {  
+  val ref1 = createRefFor("ref1")  
+  val ref2 = createRefFor("ref2")  
+  val ref3 = createRefFor("ref3")  
+  val chain = createVerticalChain(ref1,ref2,ref3, chainStyle = ChainStyle.can_use_here)
+}
+```
+1. Spread: A chain style that evenly distributes the contained layouts.
+2. SpreadInside: A chain style where the first and last layouts are affixed to the constraints on each end of the chain and the rest are evenly distributed.
+3. Packed: A chain style where the contained layouts are packed together and placed to the center of the available space.
+4. `fun Packed(bias: Float)`: A chain style where the contained layouts are packed together and placed in the available space according to a given `bias`.
+
+# Visibility APIs
+
+## Setup
+```kotlin
+ConstraintSet {
+	val ref1 = createRefFor("ref1")
+	constrain(ref1){  
+	  visibility = Visibility.can_use_here  
+	}
+}
+```
+
+**1. Visible:** Indicates that the widget will be painted in the `ConstraintLayout`. All render-time transforms will apply normally.
+**2. Invisible:** The widget will not be painted in the `ConstraintLayout` but its dimensions and constraints will still apply. Equivalent to forcing the alpha to `0.0`.
+**3. Gone:** Like `Invisible`, but the dimensions of the widget will collapse to (`0,0`), the constraints will still apply.
+
+# Dimension APIs
+
+## Setup
+```kotlin
+ConstraintSet {
+	val ref1 = createRefFor("ref1")
+	constrain(ref1){  
+		width = Dimension.can_use_here
+		height = Dimension.can_use_here
+	}
+}
+```
+
+## preferredValue
+```kotlin
+fun preferredValue(dp: Dp): Dimension.MinCoercible
+```
+Links should be specified from both sides corresponding to this dimension, in order for this to work.
+Creates a Dimension such that if the constraints allow it, will have the size given by dp, otherwise will take the size remaining within the constraints.
+This is effectively a shorthand for `fillToConstraints` with a max value.
+To make the value fixed (respected regardless the `ConstraintSet`), value should be used instead.
+
+## value
+```kotlin
+fun value(dp: Dp): Dimension
+```
+Creates a `Dimension` representing a fixed dp size. The size will not change according to the constraints in the `ConstraintSet`.
+
+## ratio
+```kotlin
+fun ratio(ratio: String): Dimension
+```
+Sets the dimensions to be defined as a ratio of the width and height. The assigned dimension will be considered to also be `fillToConstraints`.
+The string to define a ratio is defined by the format: `"W:H"`. Where `H` is the `height` as a proportion of `W` (the `width`).
+Eg: `width = Dimension.ratio("1:2")` sets the `width` to be half as large as the `height`.
+Note that only one dimension should be defined as a ratio.
+
+## preferredWrapContent
+```kotlin
+val preferredWrapContent: Dimension.Coercible
+```
+Links should be specified from both sides corresponding to this dimension, in order for this to work.
+A Dimension with suggested wrap content behavior. The wrap content size will be respected unless the constraints in the ConstraintSet do not allow it. To make the value fixed (respected regardless the `ConstraintSet`), `wrapContent` should be used instead.
+
+## wrapContent
+```kotlin
+val wrapContent: Dimension
+```
+A fixed `Dimension` with wrap content behavior. The size will not change according to the constraints in the `ConstraintSet`.
+
+## parent
+```kotlin
+val matchParent: Dimension
+```
+A fixed `Dimension` that matches the dimensions of the root ConstraintLayout. The size will not change accoring to the constraints in the `ConstraintSet`.
+
+## fillToConstraints
+```kotlin
+val fillToConstraints: Dimension.Coercible
+```
+Links should be specified from both sides corresponding to this dimension, in order for this to work. A `Dimension` that spreads to match constraints.
+
+## percent
+```kotlin
+fun percent(percent: Float): Dimension
+```
+A `Dimension` that is a percent of the parent in the corresponding direction.
