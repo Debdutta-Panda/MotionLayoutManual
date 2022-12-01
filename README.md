@@ -2059,3 +2059,296 @@ fun MotionLayout1() {
 ```
 
 ![clock](https://user-images.githubusercontent.com/92369023/205028217-ad6d88bf-b70b-4da0-bb49-e7ce436aab7d.gif)
+
+```kotlin
+@OptIn(ExperimentalMotionApi::class)
+@Composable
+fun MotionLayout1() {
+    Box(){
+        var progress by remember {
+            mutableStateOf(0f)
+        }
+
+        MotionLayout(
+            start = ConstraintSet {
+                val background = createRefFor("background")
+                val slider = createRefFor("slider")
+                val ecommerce = createRefFor("ecommerce")
+                val platform = createRefFor("platform")
+
+                val buy = createRefFor("buy")
+                val items = createRefFor("items")
+                val buyIcon = createRefFor("buyIcon")
+                val buyHolder = createRefFor("buyHolder")
+
+                constrain(items){
+                    centerHorizontallyTo(buy)
+                    bottom.linkTo(buyIcon.top,8.dp)
+                }
+                constrain(buy){
+                    start.linkTo(buyHolder.start,16.dp)
+                    bottom.linkTo(items.top,8.dp)
+                }
+                constrain(buyHolder){
+                    top.linkTo(buy.top,-12.dp)
+                    bottom.linkTo(background.bottom, 16.dp)
+                    start.linkTo(parent.start,18.dp)
+                    end.linkTo(buy.end,-16.dp)
+                    width = Dimension.fillToConstraints
+                    height = Dimension.fillToConstraints
+
+                }
+                constrain(buyIcon){
+                    centerHorizontallyTo(buy)
+                    bottom.linkTo(buyHolder.bottom,12.dp)
+                }
+
+                val sell = createRefFor("sell")
+                val products = createRefFor("products")
+                val sellIcon = createRefFor("sellIcon")
+                val sellHolder = createRefFor("sellHolder")
+
+                constrain(products){
+                    centerHorizontallyTo(sell)
+                    bottom.linkTo(sellIcon.top,8.dp)
+                }
+                constrain(sell){
+                    end.linkTo(sellHolder.end,16.dp)
+                    bottom.linkTo(products.top,8.dp)
+                }
+                constrain(sellHolder){
+                    top.linkTo(sell.top,-12.dp)
+                    bottom.linkTo(background.bottom, 16.dp)
+                    start.linkTo(sell.start,-18.dp)
+                    end.linkTo(parent.end,16.dp)
+                    width = Dimension.fillToConstraints
+                    height = Dimension.fillToConstraints
+
+                }
+                constrain(sellIcon){
+                    centerHorizontallyTo(sell)
+                    bottom.linkTo(sellHolder.bottom,12.dp)
+                }
+
+                constrain(background){
+                    top.linkTo(parent.top)
+                    start.linkTo(parent.start)
+                    width = Dimension.matchParent
+                    height = Dimension.value(250.dp)
+                }
+                constrain(slider){
+                    bottom.linkTo(parent.bottom)
+                }
+                constrain(ecommerce){
+                    centerHorizontallyTo(parent)
+                    top.linkTo(parent.top,32.dp)
+                }
+                constrain(platform){
+                    centerHorizontallyTo(parent)
+                    top.linkTo(ecommerce.bottom)
+                }
+            },
+            end = ConstraintSet {
+                val background = createRefFor("background")
+                val slider = createRefFor("slider")
+                val ecommerce = createRefFor("ecommerce")
+                val platform = createRefFor("platform")
+
+                val buy = createRefFor("buy")
+                val items = createRefFor("items")
+                val buyIcon = createRefFor("buyIcon")
+                val buyHolder = createRefFor("buyHolder")
+
+                constrain(items){
+                    centerVerticallyTo(buyHolder)
+                    start.linkTo(buy.end)
+                }
+                constrain(buy){
+                    start.linkTo(buyHolder.start,16.dp)
+                    bottom.linkTo(items.top,8.dp)
+                    centerVerticallyTo(buyHolder)
+                }
+                constrain(buyHolder){
+                    top.linkTo(parent.top,8.dp)
+                    start.linkTo(parent.start,16.dp)
+                    bottom.linkTo(buy.bottom,-8.dp)
+                    end.linkTo(buyIcon.end,-12.dp)
+                    width = Dimension.fillToConstraints
+                    height = Dimension.fillToConstraints
+                }
+                constrain(buyIcon){
+                    start.linkTo(items.end,12.dp)
+                    centerVerticallyTo(buyHolder)
+                }
+
+                val sell = createRefFor("sell")
+                val products = createRefFor("products")
+                val sellIcon = createRefFor("sellIcon")
+                val sellHolder = createRefFor("sellHolder")
+
+                constrain(products){
+                    centerVerticallyTo(sellHolder)
+                    end.linkTo(sellIcon.start)
+                }
+                constrain(sell){
+                    end.linkTo(products.start,16.dp)
+                    centerVerticallyTo(sellHolder)
+                }
+                constrain(sellHolder){
+                    top.linkTo(sellIcon.top,-8.dp)
+                    start.linkTo(sell.start,-16.dp)
+                    bottom.linkTo(background.bottom,8.dp)
+                    end.linkTo(parent.end,12.dp)
+                    width = Dimension.fillToConstraints
+                    height = Dimension.fillToConstraints
+                }
+                constrain(sellIcon){
+                    end.linkTo(sellHolder.end,12.dp)
+                    bottom.linkTo(sellHolder.bottom,8.dp)
+                }
+
+                createHorizontalChain(ecommerce,platform, chainStyle = ChainStyle.Packed)
+                constrain(ecommerce){
+                    centerVerticallyTo(background)
+                }
+                constrain(platform){
+                    baseline.linkTo(ecommerce.baseline)
+                }
+                constrain(background){
+                    top.linkTo(parent.top)
+                    start.linkTo(parent.start)
+                    width = Dimension.matchParent
+                    height = Dimension.value(180.dp)
+                }
+                constrain(slider){
+                    bottom.linkTo(parent.bottom)
+                }
+            },
+            progress = progress,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            Box(
+                modifier = Modifier
+                    .layoutId("background")
+                    .background(Color(0xff0075FF))
+            )
+            Text(
+                "E-Commerce",
+                color = Color.White,
+                fontWeight = FontWeight.Bold,
+                fontSize = (32-8*progress).sp,
+                modifier = Modifier
+                    .layoutId("ecommerce")
+                    .padding(horizontal = 4.dp)
+            )
+            Text(
+                "Platform",
+                color = Color.White,
+                fontWeight = FontWeight.Bold,
+                fontSize = (32-8*progress).sp,
+                modifier = Modifier
+                    .layoutId("platform")
+                    .padding(horizontal = 4.dp)
+            )
+
+            Box(
+                modifier = Modifier
+                    .layoutId("buyHolder")
+                    .coloredShadow(
+                        color = Color.Gray,
+                        borderRadius = 12.dp,
+                        blurRadius = 4.dp,
+                        offsetX = 4.dp,
+                        offsetY = 4.dp
+                    )
+                    .clip(RoundedCornerShape(12.dp))
+                    .background(Color.White)
+            )
+
+            Text(
+                "Buy",
+                color = Color(0xff0075FF),
+                fontWeight = FontWeight.Bold,
+                fontSize = 24.sp,
+                modifier = Modifier
+                    .layoutId("buy")
+                    .padding(4.dp)
+            )
+
+            Text(
+                "Items",
+                color = Color.Gray,
+                fontSize = 16.sp,
+                modifier = Modifier
+                    .layoutId("items")
+                    .padding(4.dp)
+            )
+
+            Icon(
+                painter = painterResource(id = R.drawable.milk_svgrepo_com),
+                contentDescription = "",
+                modifier = Modifier
+                    .layoutId("buyIcon")
+                    .padding(4.dp)
+                    .size(32.dp),
+                tint = Color.Unspecified
+            )
+
+            Box(
+                modifier = Modifier
+                    .layoutId("sellHolder")
+                    .coloredShadow(
+                        color = Color.Gray,
+                        borderRadius = 12.dp,
+                        blurRadius = 4.dp,
+                        offsetX = 4.dp,
+                        offsetY = 4.dp
+                    )
+                    .clip(RoundedCornerShape(12.dp))
+                    .background(Color.White)
+            )
+
+            Text(
+                "Sell",
+                color = Color(0xff0075FF),
+                fontWeight = FontWeight.Bold,
+                fontSize = 24.sp,
+                modifier = Modifier
+                    .layoutId("sell")
+                    .padding(4.dp)
+            )
+
+            Text(
+                "Products",
+                color = Color.Gray,
+                fontSize = 16.sp,
+                modifier = Modifier
+                    .layoutId("products")
+                    .padding(4.dp)
+            )
+
+            Icon(
+                painter = painterResource(id = R.drawable.rich_svgrepo_com),
+                contentDescription = "",
+                modifier = Modifier
+                    .layoutId("sellIcon")
+                    .padding(4.dp)
+                    .size(32.dp),
+                tint = Color.Unspecified
+            )
+
+            Slider(
+                modifier = Modifier
+                    .layoutId("slider")
+                    .padding(24.dp),
+                value = progress,
+                onValueChange = {
+                    progress = it
+                }
+            )
+        }
+    }
+}
+```
+
+![morphing](https://user-images.githubusercontent.com/92369023/205112531-4c739646-f3f3-4193-b4b1-d44af2546af4.gif)
