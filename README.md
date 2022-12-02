@@ -2477,3 +2477,50 @@ fun MotionLayout1() {
 ```
 
 ![clock_coil](https://user-images.githubusercontent.com/92369023/205133738-d6e59012-0ac1-4ee2-842f-c48932510cdc.gif)
+
+```kotlin
+@OptIn(ExperimentalMotionApi::class)
+@Composable
+fun MotionLayout1() {
+    var progress by remember {
+        mutableStateOf(0f)
+    }
+    MotionLayout(
+        start = ConstraintSet {
+            val guide = createGuidelineFromTop(40.dp)
+            val box = createRefFor("box")
+            constrain(box){
+                top.linkTo(guide)
+            }
+        },
+        end = ConstraintSet {
+            val guide = createGuidelineFromTop(80.dp)
+            val box = createRefFor("box")
+
+            constrain(box){
+                top.linkTo(guide)
+            }
+        },
+        progress = progress,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Box(
+            modifier = Modifier
+                .layoutId("box")
+                .size(100.dp)
+                .background(Color.Red)
+        )
+        Slider(
+            modifier = Modifier
+                .layoutId("slider")
+                .padding(24.dp),
+            value = progress,
+            onValueChange = {
+                progress = it
+            }
+        )
+    }
+}
+```
+
+![guide](https://user-images.githubusercontent.com/92369023/205214622-eb941fca-ed2e-4bf5-a67e-2d2a53d18632.gif)
