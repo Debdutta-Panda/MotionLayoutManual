@@ -2557,7 +2557,7 @@ Visit https://json5.org/ for more information on JSON5.
 
 ## Syntax
 
-```kotlin
+```json5
 {
 	<the_referenceId>: {
 		width/height: "wrap/preferWrap/spread/parent/<percentage>%/<r1>:<r2>"/{
@@ -2583,3 +2583,60 @@ Visit https://json5.org/ for more information on JSON5.
 	vWeight/hWeight: float,
 }
 ```
+
+```kotlin
+@OptIn(ExperimentalMotionApi::class)
+@Composable
+fun MotionLayout1() {
+    var progress by remember {
+        mutableStateOf(0f)
+    }
+    MotionLayout(
+        start = ConstraintSet("""
+            {
+              "box": {
+                width: "10%",
+                height: 100,
+                center: "parent",
+                custom: {
+                  background: "#ff0000"
+                }
+              }
+            }
+        """.trimIndent()),
+        end = ConstraintSet("""
+            {
+              "box": {
+                width: "10%",
+                height: "20%",
+                top: "parent",
+                end: ["parent","end",20],
+                custom: {
+                  background: "#0000ff"
+                }
+              }
+            }
+        """.trimIndent()),
+        progress = progress,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        val properties = motionProperties(id = "box")
+        Box(
+            modifier = Modifier
+                .layoutId("box")
+                .background(properties.value.color("background"))
+        )
+    }
+    Slider(
+        modifier = Modifier
+            .layoutId("slider")
+            .padding(24.dp),
+        value = progress,
+        onValueChange = {
+            progress = it
+        }
+    )
+}
+```
+
+![json5ex1](https://user-images.githubusercontent.com/92369023/205429844-51f1e512-0296-4595-a363-5339368cfa3e.gif)
