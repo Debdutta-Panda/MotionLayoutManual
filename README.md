@@ -2561,6 +2561,12 @@ Visit https://json5.org/ for more information on JSON5.
 {
 	Helpers: [
 		[
+                  'hGuideline/vGuideline',{
+                    id: <refIdString>,
+                    percent/start/end: <distance_from_start_or_end_or_percentFloat_distance_from_top>
+                  }
+                ],
+		[
 			'hChain/vChain',
 			[<refIds>],
 			{
@@ -2571,6 +2577,10 @@ Visit https://json5.org/ for more information on JSON5.
 			}
 		]
 	],
+	<ruideRefId>: {
+		type: 'hGuideline/vGuideline',
+		percent: 0.25
+      	},
 	<the_referenceId>: {
 		width/height: "wrap/preferWrap/spread/parent/<percentage>%/<r1>:<r2>"/{
 			value: <value>,
