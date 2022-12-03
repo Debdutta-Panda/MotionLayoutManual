@@ -2524,3 +2524,29 @@ fun MotionLayout1() {
 ```
 
 ![guide](https://user-images.githubusercontent.com/92369023/205214622-eb941fca-ed2e-4bf5-a67e-2d2a53d18632.gif)
+
+# JSON5 approach
+
+JSON5 is similar to JSON. You can think JSON5 as the superset of JSON. So, any json is a valid json5 as well.
+
+## Summary of Features
+The following ECMAScript 5.1 features, which are not supported in JSON, have been extended to JSON5.
+
+### Objects
+* Object keys may be an ECMAScript 5.1 IdentifierName.
+* Objects may have a single trailing comma.
+### Arrays
+* Arrays may have a single trailing comma.
+### Strings
+* Strings may be single quoted.
+* Strings may span multiple lines by escaping new line characters.
+* Strings may include character escapes.
+### Numbers
+* Numbers may be hexadecimal.
+* Numbers may have a leading or trailing decimal point.
+* Numbers may be IEEE 754 positive infinity, negative infinity, and NaN.
+* Numbers may begin with an explicit plus sign.
+### Comments
+* Single and multi-line comments are allowed.
+### White Space
+* Additional white space characters are allowed.
