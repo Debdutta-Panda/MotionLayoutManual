@@ -1,25 +1,31 @@
 package com.debduttapanda.motionlayoutmanual
 
 import android.annotation.SuppressLint
+import android.graphics.BlurMaskFilter
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Slider
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.layoutId
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.*
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.graphics.Paint
+import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.*
 import com.debduttapanda.motionlayoutmanual.ui.theme.MotionLayoutManualTheme
@@ -234,27 +240,419 @@ private fun SampleUI() {
 
 @OptIn(ExperimentalMotionApi::class)
 @Composable
-fun MotionLayout1() {
-    MotionLayout(
-        start = ConstraintSet {
-            val box = createRefFor("box")
+fun Morphing() {
+    Box(){
+        var progress by remember {
+            mutableStateOf(0f)
+        }
 
-            constrain(box){
-                top.linkTo(parent.top)
-                start.linkTo(parent.start)
+        MotionLayout(
+            start = ConstraintSet {
+                val background = createRefFor("background")
+                val slider = createRefFor("slider")
+                val ecommerce = createRefFor("ecommerce")
+                val platform = createRefFor("platform")
+
+                val buy = createRefFor("buy")
+                val items = createRefFor("items")
+                val buyIcon = createRefFor("buyIcon")
+                val buyHolder = createRefFor("buyHolder")
+
+                constrain(items){
+                    centerHorizontallyTo(buy)
+                    bottom.linkTo(buyIcon.top,8.dp)
+                }
+                constrain(buy){
+                    start.linkTo(buyHolder.start,16.dp)
+                    bottom.linkTo(items.top,8.dp)
+                }
+                constrain(buyHolder){
+                    top.linkTo(buy.top,-12.dp)
+                    bottom.linkTo(background.bottom, 16.dp)
+                    start.linkTo(parent.start,18.dp)
+                    end.linkTo(buy.end,-16.dp)
+                    width = Dimension.fillToConstraints
+                    height = Dimension.fillToConstraints
+
+                }
+                constrain(buyIcon){
+                    centerHorizontallyTo(buy)
+                    bottom.linkTo(buyHolder.bottom,12.dp)
+                }
+
+                val sell = createRefFor("sell")
+                val products = createRefFor("products")
+                val sellIcon = createRefFor("sellIcon")
+                val sellHolder = createRefFor("sellHolder")
+
+                constrain(products){
+                    centerHorizontallyTo(sell)
+                    bottom.linkTo(sellIcon.top,8.dp)
+                }
+                constrain(sell){
+                    end.linkTo(sellHolder.end,16.dp)
+                    bottom.linkTo(products.top,8.dp)
+                }
+                constrain(sellHolder){
+                    top.linkTo(sell.top,-12.dp)
+                    bottom.linkTo(background.bottom, 16.dp)
+                    start.linkTo(sell.start,-18.dp)
+                    end.linkTo(parent.end,16.dp)
+                    width = Dimension.fillToConstraints
+                    height = Dimension.fillToConstraints
+
+                }
+                constrain(sellIcon){
+                    centerHorizontallyTo(sell)
+                    bottom.linkTo(sellHolder.bottom,12.dp)
+                }
+
+                constrain(background){
+                    top.linkTo(parent.top)
+                    start.linkTo(parent.start)
+                    width = Dimension.matchParent
+                    height = Dimension.value(250.dp)
+                }
+                constrain(slider){
+                    bottom.linkTo(parent.bottom)
+                }
+                constrain(ecommerce){
+                    centerHorizontallyTo(parent)
+                    top.linkTo(parent.top,32.dp)
+                }
+                constrain(platform){
+                    centerHorizontallyTo(parent)
+                    top.linkTo(ecommerce.bottom)
+                }
+            },
+            end = ConstraintSet {
+                val background = createRefFor("background")
+                val slider = createRefFor("slider")
+                val ecommerce = createRefFor("ecommerce")
+                val platform = createRefFor("platform")
+
+                val buy = createRefFor("buy")
+                val items = createRefFor("items")
+                val buyIcon = createRefFor("buyIcon")
+                val buyHolder = createRefFor("buyHolder")
+
+                constrain(items){
+                    centerVerticallyTo(buyHolder)
+                    start.linkTo(buy.end)
+                }
+                constrain(buy){
+                    start.linkTo(buyHolder.start,16.dp)
+                    bottom.linkTo(items.top,8.dp)
+                    centerVerticallyTo(buyHolder)
+                }
+                constrain(buyHolder){
+                    top.linkTo(parent.top,8.dp)
+                    start.linkTo(parent.start,16.dp)
+                    bottom.linkTo(buy.bottom,-8.dp)
+                    end.linkTo(buyIcon.end,-12.dp)
+                    width = Dimension.fillToConstraints
+                    height = Dimension.fillToConstraints
+                }
+                constrain(buyIcon){
+                    start.linkTo(items.end,12.dp)
+                    centerVerticallyTo(buyHolder)
+                }
+
+                val sell = createRefFor("sell")
+                val products = createRefFor("products")
+                val sellIcon = createRefFor("sellIcon")
+                val sellHolder = createRefFor("sellHolder")
+
+                constrain(products){
+                    centerVerticallyTo(sellHolder)
+                    end.linkTo(sellIcon.start)
+                }
+                constrain(sell){
+                    end.linkTo(products.start,16.dp)
+                    centerVerticallyTo(sellHolder)
+                }
+                constrain(sellHolder){
+                    top.linkTo(sellIcon.top,-8.dp)
+                    start.linkTo(sell.start,-16.dp)
+                    bottom.linkTo(background.bottom,8.dp)
+                    end.linkTo(parent.end,12.dp)
+                    width = Dimension.fillToConstraints
+                    height = Dimension.fillToConstraints
+                }
+                constrain(sellIcon){
+                    end.linkTo(sellHolder.end,12.dp)
+                    bottom.linkTo(sellHolder.bottom,8.dp)
+                }
+
+                createHorizontalChain(ecommerce,platform, chainStyle = ChainStyle.Packed)
+                constrain(ecommerce){
+                    centerVerticallyTo(background)
+                }
+                constrain(platform){
+                    baseline.linkTo(ecommerce.baseline)
+                }
+                constrain(background){
+                    top.linkTo(parent.top)
+                    start.linkTo(parent.start)
+                    width = Dimension.matchParent
+                    height = Dimension.value(180.dp)
+                }
+                constrain(slider){
+                    bottom.linkTo(parent.bottom)
+                }
+            },
+            progress = progress,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            Box(
+                modifier = Modifier
+                    .layoutId("background")
+                    .background(Color(0xff0075FF))
+            )
+            Text(
+                "E-Commerce",
+                color = Color.White,
+                fontWeight = FontWeight.Bold,
+                fontSize = (32-8*progress).sp,
+                modifier = Modifier
+                    .layoutId("ecommerce")
+                    .padding(horizontal = 4.dp)
+            )
+            Text(
+                "Platform",
+                color = Color.White,
+                fontWeight = FontWeight.Bold,
+                fontSize = (32-8*progress).sp,
+                modifier = Modifier
+                    .layoutId("platform")
+                    .padding(horizontal = 4.dp)
+            )
+
+            Box(
+                modifier = Modifier
+                    .layoutId("buyHolder")
+                    .coloredShadow(
+                        color = Color.Gray,
+                        borderRadius = 12.dp,
+                        blurRadius = 4.dp,
+                        offsetX = 4.dp,
+                        offsetY = 4.dp
+                    )
+                    .clip(RoundedCornerShape(12.dp))
+                    .background(Color.White)
+            )
+
+            Text(
+                "Buy",
+                color = Color(0xff0075FF),
+                fontWeight = FontWeight.Bold,
+                fontSize = 24.sp,
+                modifier = Modifier
+                    .layoutId("buy")
+                    .padding(4.dp)
+            )
+
+            Text(
+                "Items",
+                color = Color.Gray,
+                fontSize = 16.sp,
+                modifier = Modifier
+                    .layoutId("items")
+                    .padding(4.dp)
+            )
+
+            Icon(
+                painter = painterResource(id = R.drawable.milk_svgrepo_com),
+                contentDescription = "",
+                modifier = Modifier
+                    .layoutId("buyIcon")
+                    .padding(4.dp)
+                    .size(32.dp),
+                tint = Color.Unspecified
+            )
+
+            Box(
+                modifier = Modifier
+                    .layoutId("sellHolder")
+                    .coloredShadow(
+                        color = Color.Gray,
+                        borderRadius = 12.dp,
+                        blurRadius = 4.dp,
+                        offsetX = 4.dp,
+                        offsetY = 4.dp
+                    )
+                    .clip(RoundedCornerShape(12.dp))
+                    .background(Color.White)
+            )
+
+            Text(
+                "Sell",
+                color = Color(0xff0075FF),
+                fontWeight = FontWeight.Bold,
+                fontSize = 24.sp,
+                modifier = Modifier
+                    .layoutId("sell")
+                    .padding(4.dp)
+            )
+
+            Text(
+                "Products",
+                color = Color.Gray,
+                fontSize = 16.sp,
+                modifier = Modifier
+                    .layoutId("products")
+                    .padding(4.dp)
+            )
+
+            Icon(
+                painter = painterResource(id = R.drawable.rich_svgrepo_com),
+                contentDescription = "",
+                modifier = Modifier
+                    .layoutId("sellIcon")
+                    .padding(4.dp)
+                    .size(32.dp),
+                tint = Color.Unspecified
+            )
+
+            Slider(
+                modifier = Modifier
+                    .layoutId("slider")
+                    .padding(24.dp),
+                value = progress,
+                onValueChange = {
+                    progress = it
+                }
+            )
+        }
+    }
+}
+
+@OptIn(ExperimentalMotionApi::class)
+@Composable
+fun VariablesGenerage() {
+    var progress by remember {
+        mutableStateOf(0f)
+    }
+    val startj = """
+        {
+                Variables: {
+                  angle: { from: 0, step: 10 },
+                  rotation: { from: 'startRotation', step: 10 },
+                  distance: 100,
+                  mylist: { tag: 'box' }
+                },
+                Generate: {
+                  mylist: {
+                    width: 200,
+                    height: 40,
+                    circular: ['parent', 'angle', 'distance'],
+                    pivotX: 0.1,
+                    pivotY: 0.1,
+                    translationX: 225,
+                    rotationZ: 'rotation'
+                  }
+                }
             }
-        },
-        end = ConstraintSet {  },
-        progress = 0f,
+    """.trimIndent()
+    MotionLayout(
+        start = ConstraintSet(startj, overrideVariables = "{ startRotation: 0 }"),
+        end = ConstraintSet(startj, overrideVariables = "{ startRotation: 90 }"),
+        progress = progress,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        for (i in 1..36) {
+            Box(
+                modifier = Modifier
+                    .layoutId("id$i", "box")
+                    .background(Color.Red)
+            )
+        }
+    }
+    Slider(
+        modifier = Modifier
+            .layoutId("slider")
+            .padding(24.dp),
+        value = progress,
+        onValueChange = {
+            progress = it
+        }
+    )
+}
+
+@OptIn(ExperimentalMotionApi::class)
+@Composable
+fun MotionLayout1() {
+    var progress by remember {
+        mutableStateOf(0f)
+    }
+    MotionLayout(
+        start = ConstraintSet("""
+            {
+              Helpers: [
+                [
+                  'hGuideline',{
+                    id: "guide1",
+                    percent: 0.5
+                  }
+                ],
+                ["hChain",["ref1","ref2","ref3"],
+                  {
+                    style: ["spread_inside",1]                
+                  }
+                ]
+              ],
+              guide2: {
+                type: 'hGuideline',
+                percent: 0.25
+              },
+              barrier1: {
+                type: 'barrier',
+                direction: 'top',
+                margin: 20,
+                contains: ['ref1']
+                },
+              ref1: {
+                bottom: ["guide2",'bottom','margin']
+              },
+              ref2: {
+                top: "barrier1"
+              }
+            }            
+        """.trimIndent()),
+        end = ConstraintSet("""
+            
+        """.trimIndent()),
+        progress = progress,
         modifier = Modifier.fillMaxSize()
     ) {
         Box(
             modifier = Modifier
-                .layoutId("box")
-                .size(100.dp)
+                .layoutId("ref1")
+                .size(50.dp)
                 .background(Color.Red)
         )
+        Box(
+            modifier = Modifier
+                .layoutId("ref2")
+                .size(50.dp)
+                .background(Color.Green)
+        )
+        Box(
+            modifier = Modifier
+                .layoutId("ref3")
+                .size(50.dp)
+                .background(Color.Blue)
+        )
     }
+    Slider(
+        modifier = Modifier
+            .layoutId("slider")
+            .padding(24.dp),
+        value = progress,
+        onValueChange = {
+            progress = it
+        }
+    )
 }
 
 fun ConstraintSetScope.ClockEndConstraint() {
@@ -378,3 +776,45 @@ fun ClockUI() {
             .background(Color.Red)
     )
 }
+
+fun Modifier.coloredShadow(
+    color: Color = Color.Black,
+    borderRadius: Dp = 0.dp,
+    blurRadius: Dp = 0.dp,
+    offsetY: Dp = 0.dp,
+    offsetX: Dp = 0.dp,
+    spread: Float = 0f,
+    modifier: Modifier = Modifier,
+) = this.then(
+    modifier.drawBehind {
+        this.drawIntoCanvas {
+            val paint = Paint()
+            val frameworkPaint = paint.asFrameworkPaint()
+            val spreadPixel = spread.dp.toPx()
+            val leftPixel = (0f - spreadPixel) + offsetX.toPx()
+            val topPixel = (0f - spreadPixel) + offsetY.toPx()
+            val rightPixel = (this.size.width + spreadPixel)
+            val bottomPixel =  (this.size.height + spreadPixel)
+
+            if (blurRadius != 0.dp) {
+                /*
+                    The feature maskFilter used below to apply the blur effect only works
+                    with hardware acceleration disabled.
+                 */
+                frameworkPaint.maskFilter =
+                    (BlurMaskFilter(blurRadius.toPx(), BlurMaskFilter.Blur.NORMAL))
+            }
+
+            frameworkPaint.color = color.toArgb()
+            it.drawRoundRect(
+                left = leftPixel,
+                top = topPixel,
+                right = rightPixel,
+                bottom = bottomPixel,
+                radiusX = borderRadius.toPx(),
+                radiusY = borderRadius.toPx(),
+                paint
+            )
+        }
+    }
+)

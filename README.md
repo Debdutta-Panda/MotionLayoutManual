@@ -2577,7 +2577,13 @@ Visit https://json5.org/ for more information on JSON5.
 			}
 		]
 	],
-	<ruideRefId>: {
+    <barrierId>: {
+        type: 'barrier',
+        direction: 'start/end/left/right/top/bottom',
+        margin: <marginValue>,
+        contains: [<refIds>]
+    },
+	<guideRefId>: {
 		type: 'hGuideline/vGuideline',
 		percent: 0.25
       	},
@@ -2727,3 +2733,81 @@ fun MotionLayout1() {
 ```
 
 ![variableGenerator](https://user-images.githubusercontent.com/92369023/205430233-5b1cb094-8a1b-4ff1-a1b6-3c957ff28603.gif)
+
+```kotlin
+@OptIn(ExperimentalMotionApi::class)
+@Composable
+fun MotionLayout1() {
+    var progress by remember {
+        mutableStateOf(0f)
+    }
+    MotionLayout(
+        start = ConstraintSet("""
+            {
+              Helpers: [
+                [
+                  'hGuideline',{
+                    id: "guide1",
+                    percent: 0.5
+                  }
+                ],
+                ["hChain",["ref1","ref2","ref3"],
+                  {
+                    style: ["spread_inside",1]                
+                  }
+                ]
+              ],
+              guide2: {
+                type: 'hGuideline',
+                percent: 0.25
+              },
+              barrier1: {
+                type: 'barrier',
+                direction: 'top',
+                margin: 20,
+                contains: ['ref1']
+                },
+              ref1: {
+                bottom: ["guide2",'bottom','margin']
+              },
+              ref2: {
+                top: "barrier1"
+              }
+            }            
+        """.trimIndent()),
+        end = ConstraintSet("""
+            
+        """.trimIndent()),
+        progress = progress,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Box(
+            modifier = Modifier
+                .layoutId("ref1")
+                .size(50.dp)
+                .background(Color.Red)
+        )
+        Box(
+            modifier = Modifier
+                .layoutId("ref2")
+                .size(50.dp)
+                .background(Color.Green)
+        )
+        Box(
+            modifier = Modifier
+                .layoutId("ref3")
+                .size(50.dp)
+                .background(Color.Blue)
+        )
+    }
+    Slider(
+        modifier = Modifier
+            .layoutId("slider")
+            .padding(24.dp),
+        value = progress,
+        onValueChange = {
+            progress = it
+        }
+    )
+}
+```
