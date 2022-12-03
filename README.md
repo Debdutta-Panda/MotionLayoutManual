@@ -2640,3 +2640,68 @@ fun MotionLayout1() {
 ```
 
 ![json5ex1](https://user-images.githubusercontent.com/92369023/205429844-51f1e512-0296-4595-a363-5339368cfa3e.gif)
+
+```kotlin
+@OptIn(ExperimentalMotionApi::class)
+@Composable
+fun MotionLayout1() {
+    var progress by remember {
+        mutableStateOf(0f)
+    }
+    val base = remember {
+        """
+            {
+                Variables: {
+                  angle: { from: 0, step: 10 },
+                  rotation: { from: 'startRotation', step: 10 },
+                  distance: 100,
+                  mylist: { tag: 'box' }
+                },
+                Generate: {
+                  mylist: {
+                    width: 200,
+                    height: 40,
+                    circular: ['parent', 'angle', 'distance'],
+                    pivotX: 0.1,
+                    pivotY: 0.1,
+                    translationX: 225,
+                    rotationZ: 'rotation'
+                  }
+                }
+            }
+        """.trimIndent()
+    }
+    MotionLayout(
+        start = ConstraintSet(base, overrideVariables = "{ startRotation: 0 }"),
+        end = ConstraintSet(base, overrideVariables = "{ startRotation: 90 }"),
+        progress = progress,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        val colors = listOf(
+            Color.Red,
+            Color.Green,
+            Color.Blue,
+            Color.Magenta,
+            Color.Cyan,
+            Color.Yellow,
+            Color.DarkGray
+        )
+        for (i in 1..36) {
+            Box(modifier = Modifier
+                .layoutId("id$i", "box")
+                .background(colors[i % colors.size]))
+        }
+    }
+    Slider(
+        modifier = Modifier
+            .layoutId("slider")
+            .padding(24.dp),
+        value = progress,
+        onValueChange = {
+            progress = it
+        }
+    )
+}
+```
+
+![variableGenerator](https://user-images.githubusercontent.com/92369023/205430233-5b1cb094-8a1b-4ff1-a1b6-3c957ff28603.gif)
