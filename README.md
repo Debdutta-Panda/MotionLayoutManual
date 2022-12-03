@@ -2565,6 +2565,10 @@ Visit https://json5.org/ for more information on JSON5.
 			min: <value>,
 			max: <value>
 		} 
-	}
+	},
+	center/centerHorizontally/centerVertically: 'parent/referenceId',
+	alpha/scaleX/scaleY/pivotX/pivotY: <float_in_range_0_to_1>,
+	
+	
 }
 ```
