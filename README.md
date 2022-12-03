@@ -2559,7 +2559,7 @@ Visit https://json5.org/ for more information on JSON5.
 
 ```kotlin
 {
-	<the_id>: {
+	<the_referenceId>: {
 		width/height: "wrap/preferWrap/spread/parent/<percentage>%/<r1>:<r2>"/{
 			value: <value>,
 			min: <value>,
@@ -2568,7 +2568,18 @@ Visit https://json5.org/ for more information on JSON5.
 	},
 	center/centerHorizontally/centerVertically: 'parent/referenceId',
 	alpha/scaleX/scaleY/pivotX/pivotY: <float_in_range_0_to_1>,
-	
-	
+	translationX/translationY/translationZ: <number_in_dp>,
+	rotationX/rotatinY/rotationZ: <number_in_degree>,
+	visibility: visible/invisible/gone,
+	custom: {
+		customPropertyName: number/hexColorString,
+	},
+	circular: [referenceId,angle,distance],
+	start/end: [referenceId,"start/end",margin,goneMargin]/referenceId,
+	left/right: [referenceId,"left/right",margin,goneMargin],
+	top/bottom: [referenceId,"top/bottom",margin,goneMargin]/referenceId,
+	baseline: [referenceId,"baseline/top/bottom",margin,goneMargin]/referenceId,
+	vBias/hBias: float,
+	vWeight/hWeight: float,
 }
 ```
