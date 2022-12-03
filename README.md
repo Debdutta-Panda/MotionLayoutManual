@@ -2559,6 +2559,18 @@ Visit https://json5.org/ for more information on JSON5.
 
 ```json5
 {
+	Helpers: [
+		[
+			'hChain/vChain',
+			[<refIds>],
+			{
+				style: 'packed/spread/spread_inside'/[
+					'packed/spread/spread_inside',
+					<bias_value_in_float>
+				]
+			}
+		]
+	],
 	<the_referenceId>: {
 		width/height: "wrap/preferWrap/spread/parent/<percentage>%/<r1>:<r2>"/{
 			value: <value>,
