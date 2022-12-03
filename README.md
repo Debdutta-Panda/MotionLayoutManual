@@ -2560,7 +2560,7 @@ Visit https://json5.org/ for more information on JSON5.
 ```kotlin
 {
 	<the_id>: {
-		width/height: "wrap/preferWrap/spread/parent/<percentage>%/<r1>:<r2>/{
+		width/height: "wrap/preferWrap/spread/parent/<percentage>%/<r1>:<r2>"/{
 			value: <value>,
 			min: <value>,
 			max: <value>
