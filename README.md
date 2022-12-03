@@ -2550,3 +2550,5 @@ The following ECMAScript 5.1 features, which are not supported in JSON, have bee
 * Single and multi-line comments are allowed.
 ### White Space
 * Additional white space characters are allowed.
+
+Visit https://json5.org/ for more information on JSON5.
